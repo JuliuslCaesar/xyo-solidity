@@ -8,7 +8,7 @@ interface XYNotify {
 }
 
 
-contract XY {
+contract XYFencedQuery {
     using SafeMath for *;
 
     struct PendingQuery {
