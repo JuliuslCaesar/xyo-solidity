@@ -15,7 +15,7 @@ contract XY {
         uint xyoValue;
         address xyoAddress;
         uint accuracyThreshold;
-        uint certaintyThresold;
+        uint certaintyThreshold;
         uint minimumDelay;
         uint epoch;
         address xynotify;
@@ -34,6 +34,7 @@ contract XY {
 
     // Stores a mapping of pending queries
     mapping (address => PendingQuery) public pendingQueries;
+    
     // Stores a mapping of xyoAddresses to answers
     mapping (address => Answer) public answeredQueries;
     address[] public answerList;
