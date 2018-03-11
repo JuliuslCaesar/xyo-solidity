@@ -2,7 +2,7 @@
   "name": "xyo-solidity",
   "version": "0.1.5",
   "description": "Library toolkit for developing dApps connected to the XY Oracle Network. Users can subscribe to webhooks for event listeners from the XY contract using https://if-eth.com.",
-  "main": "node-index.js",
+  "main": "dist/index.js",
   "directories": {
     "contracts": "contracts",
     "example": "examples",
@@ -31,11 +31,23 @@
   },
   "homepage": "https://github.com/XYOracleNetwork/xyo-solidity#readme",
   "dependencies": {
-    "debug": "^3.1.0",
-    "npm": "^5.7.1",
     "solc": "^0.4.21"
   },
   "devDependencies": {
-    "solhint": "^1.1.10"
+    "babel-eslint": "^8.2.2",
+    "debug": "^3.1.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-fixer": "^0.1.4",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "node-glob": "^1.2.0",
+    "npm": "^5.7.1",
+    "orchestrator": "^0.3.8",
+    "solhint": "^1.1.10",
+    "through2": "^2.0.3"
   }
 }
