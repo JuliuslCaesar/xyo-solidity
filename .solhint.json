@@ -1,7 +1,7 @@
 {
     "extends": "default",
     "rules": {
-        "indent": ["error", 4],
+        "indent": [0],
         "quotes": ["error", "double"],
         "max-line-length": ["error", 120],
         "compiler-fixed": [0],

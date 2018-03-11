@@ -40,6 +40,7 @@ contract XYPendingTokenSale is XYTimedTokenSale {
       _approve(_buyer);
     }
 
+    //broke this out so that we can call it internally for auto-approve
     function _approve(address _buyer) internal {
       if (pending[_buyer].tokens > 0) {
         if (seller.send(pending[_buyer].eth)) {

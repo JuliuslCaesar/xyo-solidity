@@ -3,6 +3,7 @@ pragma solidity ^0.4.2;
 import "./SafeMath.sol";
 import "./ERC20.sol";
 
+
 contract XYTokenSale {
     using SafeMath for *;
 
@@ -16,54 +17,54 @@ contract XYTokenSale {
     event SendTokens(address seller, address buyer, uint amount);
 
     function XYTokenSale (address _token, address _beneficiary, uint _price, uint _tokensAvailable, uint _minEther) public {
-      seller = msg.sender;
-      token = ERC20(_token);
-      beneficiary = _beneficiary;
-      price = _price;
-      minEther = _minEther;
-      setAvailableTokens(_tokensAvailable);
-    }
-
-    function setAvailableTokens(uint _tokens) public onlySeller {
-      token.approve(this, _tokens);
-    }
-
-    function getAvailableTokens() public view returns (uint) {
-      return token.allowance(seller, this);
-    }
-
-    function setMinEther(uint _minEther) public onlySeller {
-      minEther = _minEther;
-    }
-
-    function setPrice(uint _price) public onlySeller {
-      price = _price;
+        seller = msg.sender;
+        token = ERC20(_token);
+        beneficiary = _beneficiary;
+        price = _price;
+        minEther = _minEther;
+        setAvailableTokens(_tokensAvailable);
     }
 
     function () public payable {
-      _purchase();
+        _purchase();
+    }
+
+    function setAvailableTokens(uint _tokens) public onlySeller {
+        token.approve(this, _tokens);
+    }
+
+    function getAvailableTokens() public view returns (uint) {
+        return token.allowance(seller, this);
+    }
+
+    function setMinEther(uint _minEther) public onlySeller {
+        minEther = _minEther;
+    }
+
+    function setPrice(uint _price) public onlySeller {
+        price = _price;
     }
 
     function _purchase() internal {
-      uint ethAmount = msg.value;
-      uint tokenAmount = SafeMath.mul(ethAmount, price);
-      require(tokenAmount <= getAvailableTokens());
-      require(ethAmount >= minEther || minEther == 0);
-      _acceptEther(ethAmount);
-      _sendTokens(tokenAmount);
+        uint ethAmount = msg.value;
+        uint tokenAmount = SafeMath.mul(ethAmount, price);
+        require(tokenAmount <= getAvailableTokens());
+        require(ethAmount >= minEther || minEther == 0);
+        _acceptEther(ethAmount);
+        _sendTokens(tokenAmount);
     }
 
     function _acceptEther(uint _amount) internal {
-      if (seller.send(_amount)) {
-        AcceptEther(seller, msg.sender, _amount);
-      } else {
-        revert();
-      }
+        if (seller.send(_amount)) {
+            AcceptEther(seller, msg.sender, _amount);
+        } else {
+            revert();
+        }
     }
 
     function _sendTokens(uint _amount) internal {
-      token.transferFrom(seller, msg.sender, _amount);
-      SendTokens(seller, msg.sender, _amount);
+        token.transferFrom(seller, msg.sender, _amount);
+        SendTokens(seller, msg.sender, _amount);
     }
 
     modifier onlySeller() {
