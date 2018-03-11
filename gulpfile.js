@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: gulpfile.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 10, 2018 6:06 PM
+ * @Last modified time: Saturday, March 10, 2018 9:05 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -15,7 +15,7 @@ const gulp = require(`gulp`);
 const through = require(`through2`);
 const Vinyl = require(`vinyl`);
 const rename = require(`gulp-rename`);
-const XYSolidity = require(`./src/index.js`);
+const XYSolidity = require(`./index.js`);
 
 const SOURCE_BASE = `./src`;
 const OUTPUT_BASE = `./dist`;

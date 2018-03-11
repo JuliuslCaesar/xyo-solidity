@@ -1,14 +1,15 @@
 {
   "name": "xyo-solidity",
-  "version": "0.1.6",
+  "version": "0.1.14",
   "description": "Library toolkit for developing dApps connected to the XY Oracle Network. Users can subscribe to webhooks for event listeners from the XY contract using https://if-eth.com.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "directories": {
-    "contracts": "contracts",
-    "example": "examples",
+    "src": "src",
+    "dist": "dist",
     "test": "test"
   },
   "scripts": {
+    "postinstall": "node copy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,6 +32,7 @@
   },
   "homepage": "https://github.com/XYOracleNetwork/xyo-solidity#readme",
   "dependencies": {
+    "ncp": "^2.0.0",
     "solc": "^0.4.21"
   },
   "devDependencies": {
