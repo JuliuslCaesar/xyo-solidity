@@ -18,10 +18,10 @@ contract XYEligibleTokenSale is XYPendingTokenSale {
   // blocking is permanent
   mapping(address => bool) public blocked;
 
-  function XYEligibleTokenSale(address _token, address _beneficiary, uint _price, uint _tokensAvailable, uint _minEther, uint _startTime, uint _endTime)
-  public XYPendingTokenSale(_token, _beneficiary, _price, _tokensAvailable, _minEther, _startTime, _endTime) {}
+  function XYEligibleTokenSale(address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
+  public XYPendingTokenSale(_token, _beneficiary, _price, _minEther, _startTime, _endTime) {}
 
-  function approveWithEligibility(address _buyer, address _proofOfEligibility) public onlyApprovers {
+  function approveWithEligibility(address _buyer, address _proofOfEligibility) public onlyApprovers saleNotKilled {
     require(eligible[_buyer] == 0);
     require(!blocked[_buyer]);
     super.approve(_buyer);
@@ -29,20 +29,27 @@ contract XYEligibleTokenSale is XYPendingTokenSale {
   }
 
   //this should never be used, but it prevents a call-around
-  function approve(address _buyer) public {
-    require(eligible[_buyer] != 0);
-    require(!blocked[_buyer]);
+  function approve(address _buyer) public onlyApprovers saleNotKilled onlyNonBlocked onlyEligible {
     super.approve(_buyer);
   }
 
-  function _purchase() internal {
+  function _purchase() internal onlyNonBlocked {
     address buyer = msg.sender;
-    require(!blocked[buyer]);
     super._purchase();
 
     //if the buyer is eligible, auto approve
     if (eligible[buyer] != 0) {
       _approve(buyer);
     }
+  }
+
+  modifier onlyEligible() {
+    require(eligible[msg.sender] != 0);
+    _;
+  }
+
+  modifier onlyNonBlocked() {
+    require(!blocked[msg.sender]);
+    _;
   }
 }

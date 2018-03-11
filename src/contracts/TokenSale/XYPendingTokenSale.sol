@@ -12,10 +12,18 @@ contract XYPendingTokenSale is XYTimedTokenSale {
     mapping (address => Pending) public pending;
     mapping (address => bool) public approvers;
 
-    function XYPendingTokenSale (address _token, address _beneficiary, uint _price, uint _tokensAvailable, uint _minEther, uint _startTime, uint _endTime)
-      XYTimedTokenSale(_token, _beneficiary, _price, _tokensAvailable, _minEther, _startTime, _endTime)
+    function XYPendingTokenSale (address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
+      XYTimedTokenSale(_token, _beneficiary, _price, _minEther, _startTime, _endTime)
     public {
       approvers[seller] = true;
+    }
+
+    function setApprover(address _approver, bool _enabled) public onlySeller saleNotKilled {
+      approvers[_approver] = _enabled;
+    }
+
+    function approve(address _buyer) public onlyApprovers saleNotKilled {
+      _approve(_buyer);
     }
 
     //we store the pending eth in the contract
@@ -30,14 +38,6 @@ contract XYPendingTokenSale is XYTimedTokenSale {
     //we store the pending tokens in the contracts
     function _sendTokens(uint _amount) internal {
       token.transferFrom(seller, this, _amount);
-    }
-
-    function setApprover(address _approver, bool _enabled) public onlySeller {
-      approvers[_approver] = _enabled;
-    }
-
-    function approve(address _buyer) public onlyApprovers {
-      _approve(_buyer);
     }
 
     //broke this out so that we can call it internally for auto-approve

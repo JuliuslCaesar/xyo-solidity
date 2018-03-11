@@ -7,19 +7,18 @@ contract XYTimedTokenSale is XYTokenSale {
     uint public startTime; //when the sale starts (0 = right away)
     uint public endTime; //when the sale ends (0 = never)
 
-    function XYTimedTokenSale(address _token, address _beneficiary, uint _price, uint _tokensAvailable, uint _minEther, uint _startTime, uint _endTime)
-        XYTokenSale(_token, _beneficiary, _price, _tokensAvailable, _minEther)
+    function XYTimedTokenSale(address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
+        XYTokenSale(_token, _beneficiary, _price, _minEther)
     public {
         startTime = _startTime;
         endTime = _endTime;
-        setAvailableTokens(_tokensAvailable);
     }
 
-    function setStartTime(uint _startTime) public onlySeller {
+    function setStartTime(uint _startTime) public onlySeller saleNotKilled {
         startTime = _startTime;
     }
 
-    function setEndTime(uint _endTime) public onlySeller {
+    function setEndTime(uint _endTime) public onlySeller saleNotKilled {
         endTime = _endTime;
     }
 
