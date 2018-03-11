@@ -1,8 +1,9 @@
 pragma solidity ^0.4.2;
 
 import "./XYTimedTokenSale.sol";
+import "./lib/XYApprovable.sol";
 
-contract XYPendingTokenSale is XYTimedTokenSale {
+contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
 
     struct Pending {
       uint eth;
@@ -10,19 +11,13 @@ contract XYPendingTokenSale is XYTimedTokenSale {
     }
 
     mapping (address => Pending) public pending;
-    mapping (address => bool) public approvers;
 
-    function XYPendingTokenSale (address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
-      XYTimedTokenSale(_token, _beneficiary, _price, _minEther, _startTime, _endTime)
+    function XYPendingTokenSale (address _token, uint _price, uint _minEther, uint _startTime, uint _endTime)
+      XYTimedTokenSale(_token, _price, _minEther, _startTime, _endTime)
     public {
-      approvers[seller] = true;
     }
 
-    function setApprover(address _approver, bool _enabled) public onlySeller saleNotKilled {
-      approvers[_approver] = _enabled;
-    }
-
-    function approve(address _buyer) public onlyApprovers saleNotKilled {
+    function approve(address _buyer) public onlyApprovers {
       _approve(_buyer);
     }
 
@@ -36,14 +31,14 @@ contract XYPendingTokenSale is XYTimedTokenSale {
     }
 
     //we store the pending tokens in the contracts
-    function _sendTokens(uint _amount) internal {
-      token.transferFrom(seller, this, _amount);
+    function _storeTokens(uint _amount) internal {
+      token.transferFrom(owner, this, _amount);
     }
 
     //broke this out so that we can call it internally for auto-approve
     function _approve(address _buyer) internal {
       if (pending[_buyer].tokens > 0) {
-        if (seller.send(pending[_buyer].eth)) {
+        if (owner.send(pending[_buyer].eth)) {
           token.transferFrom(this, _buyer, pending[_buyer].tokens);
           pending[_buyer].tokens = 0;
           pending[_buyer].eth = 0;
@@ -51,11 +46,6 @@ contract XYPendingTokenSale is XYTimedTokenSale {
           revert();
         }
       }
-    }
-
-    modifier onlyApprovers() {
-        require(approvers[msg.sender]);
-        _;
     }
 
 }
