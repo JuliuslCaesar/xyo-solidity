@@ -1,4 +1,4 @@
-pragma solidity ^ 0.4 .2;
+pragma solidity ^0.4.21;
 
 import "./XYPendingTokenSale.sol";
 import "./lib/XYProofOfEligibility.sol";
@@ -19,9 +19,9 @@ contract XYEligibleTokenSale is XYPendingTokenSale, XYProofOfEligibility {
     super.approve(_buyer);
   }
 
-  function _purchase() internal onlyNotBlocked {
+  function _purchase(uint _ethAmount, uint _tokenAmount) internal onlyNotBlocked {
     address buyer = msg.sender;
-    super._purchase();
+    super._purchase(_ethAmount, _tokenAmount);
 
     //if the buyer is eligible, auto approve
     if (getEligiblity(buyer) != 0) {

@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: gulpfile.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 10, 2018 9:05 PM
+ * @Last modified time: Sunday, March 11, 2018 8:51 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -22,20 +22,26 @@ const OUTPUT_BASE = `./dist`;
 
 const getLocation = (base, location) => `${base}${location}`;
 
-const compile = (path) => {
+const compile = (path, callback) => {
   const solidity = new XYSolidity();
-  const result = solidity.contracts.load(path);
-  return JSON.stringify(result);
+  solidity.contracts.load(path, callback);
 };
 
 const gulpCompile = through.obj((_file, encoding, callback) => {
   const file = _file;
   console.log(`gulpCompile: ${file.path}`);
-  const result = compile(file.path, file.stem);
-  const f = new Vinyl({
-    contents: Buffer.from(result), cwd: file.cwd, base: file.base, path: file.path,
+  compile(file.path, (error, result) => {
+    if (error) {
+      for (let i = 0; i < error.length; i++) {
+        console.log(error[i]);
+      }
+    } else {
+      const f = new Vinyl({
+        contents: Buffer.from(JSON.stringify(result)), cwd: file.cwd, base: file.base, path: file.path,
+      });
+      callback(null, f);
+    }
   });
-  callback(null, f);
 });
 
 gulp.task(`solc`, () => {

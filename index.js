@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: index.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 10, 2018 6:33 PM
+ * @Last modified time: Sunday, March 11, 2018 3:05 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -15,7 +15,7 @@ const SOLC = require(`solc`);
 const PATH = require(`path`);
 
 class Contracts {
-  load(_filename) {
+  load(_filename, callback) {
     const folder = PATH.dirname(_filename);
     const filename = PATH.basename(_filename);
     const root = PATH.basename(_filename, `.sol`);
@@ -41,7 +41,11 @@ class Contracts {
 
     process.chdir(cwd);
 
-    return output.contracts[`${filename}:${root}`];
+    if (output.errors && output.errors.length > 0) {
+      callback(output.errors, null);
+    } else {
+      callback(null, output.contracts[`${filename}:${root}`]);
+    }
   }
 
   compile(source, contractName) {

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.21;
 
 import "./XYTimedTokenSale.sol";
 import "./lib/XYApprovable.sol";
@@ -23,8 +23,8 @@ contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
 
     //we store the pending eth in the contract
     function _acceptEther(uint _amount) internal {
-      if (this.send(_amount)) {
-        AcceptEther(this, msg.sender, _amount);
+      if (address(this).send(_amount)) {
+        emit EtherAccepted(this, msg.sender, _amount);
       } else {
         revert();
       }

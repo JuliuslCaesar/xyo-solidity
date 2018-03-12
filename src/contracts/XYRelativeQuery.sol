@@ -80,7 +80,7 @@ contract XYRelativeQuery {
             _relativeAddress,
             _xynotify);
 
-        QueryReceived(
+        emit QueryReceived(
             _xyoValue,
             _xyoAddress,
             _accuracy,
@@ -108,7 +108,7 @@ contract XYRelativeQuery {
             XYRelativeQueryNotify(pendingQueries[msg.sender].xynotify).answer(
                 _xyoAddress, _range, _accuracy, _certainty, _epoch);
         }
-        AnswerReceived(_xyoAddress, _range, _accuracy, _certainty, _epoch);
+        emit AnswerReceived(_xyoAddress, _range, _accuracy, _certainty, _epoch);
         return true;
     }
 

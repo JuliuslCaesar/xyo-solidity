@@ -1,4 +1,4 @@
-pragma solidity ^ 0.4 .2;
+pragma solidity ^0.4.21;
 
 import "./XYKillable.sol";
 
@@ -21,7 +21,7 @@ contract XYLimitedTime is XYKillable {
 
   function isLive() public view returns(bool) {
     bool live = true;
-    if (isKilled) {
+    if (isKilled()) {
       live = false;
     } else if (startTime > 0) {
       if (startTime > now) {

@@ -1,4 +1,4 @@
-pragma solidity ^0.4.2;
+pragma solidity ^0.4.21;
 
 import "./XYTokenSale.sol";
 import "./lib/XYLimitedTime.sol";
@@ -6,7 +6,7 @@ import "./lib/XYLimitedTime.sol";
 contract XYTimedTokenSale is XYTokenSale, XYLimitedTime {
 
     function XYTimedTokenSale(address _token, uint _price, uint _minEther, uint _startTime, uint _endTime)
-        XYTokenSale(_token, _price, _minEther), XYLimitedTime(_startTime, _endTime)
+        XYTokenSale(_token, _price, _minEther) XYLimitedTime(_startTime, _endTime)
     public {
     }
 

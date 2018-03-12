@@ -1,4 +1,4 @@
-pragma solidity ^ 0.4 .2;
+pragma solidity ^0.4.21;
 
 import "./lib/ERC20.sol";
 import "./lib/XYKillable.sol";
@@ -16,8 +16,8 @@ contract XYTokenSale is XYKillable {
   uint public price; //price of tokens (how many tokens per ETH)
   uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum)
 
-  event AcceptEther(address seller, address buyer, uint amount);
-  event SendTokens(address seller, address buyer, uint amount);
+  event EtherAccepted(address seller, address buyer, uint amount);
+  event TokensSent(address seller, address buyer, uint amount);
 
   function XYTokenSale(address _token, uint _price, uint _minEther) public {
     token = ERC20(_token);
@@ -59,12 +59,12 @@ contract XYTokenSale is XYKillable {
 
   function _acceptEther(uint _amount) internal notKilled {
     owner.transfer(_amount);
-    AcceptEther(owner, msg.sender, _amount);
+    emit EtherAccepted(owner, msg.sender, _amount);
   }
 
   function _sendTokens(uint _amount) internal notKilled {
     token.transferFrom(owner, msg.sender, _amount);
-    SendTokens(owner, msg.sender, _amount);
+    emit TokensSent(owner, msg.sender, _amount);
   }
 
 }
