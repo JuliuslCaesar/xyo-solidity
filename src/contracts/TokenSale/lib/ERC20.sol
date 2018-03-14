@@ -1,10 +1,6 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.18;
 
-// Do not change this file.  It is ERC20 compliant
-
-interface tokenRecipient {
-  function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external;
-}
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external; }
 
 contract ERC20 {
     // Public variables of the token
