@@ -34,7 +34,7 @@
   "homepage": "https://github.com/XYOracleNetwork/xyo-solidity#readme",
   "dependencies": {
     "ncp": "^2.0.0",
-    "solc": "^0.4.21"
+    "solc": "^0.4.19"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

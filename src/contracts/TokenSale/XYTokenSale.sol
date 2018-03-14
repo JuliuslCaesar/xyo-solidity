@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.19;
 
 import "./lib/ERC20.sol";
 import "./lib/XYKillable.sol";
@@ -13,7 +13,7 @@ contract XYTokenSale is XYKillable {
 
   ERC20 public token; //address of the ERC20 token
   address public beneficiary; //address where the ETH payments go to
-  uint public price; //price of tokens (how many tokens per ETH)
+  uint private price; //price of tokens (how many tokens per ETH)
   uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum)
 
   event EtherAccepted(address seller, address buyer, uint amount);
@@ -31,7 +31,7 @@ contract XYTokenSale is XYKillable {
     require(ethAmount >= minEther || minEther == 0);
 
     uint ethAmount = msg.value;
-    uint tokenAmount = SafeMath.mul(ethAmount, price);
+    uint tokenAmount = _tokensFromEther(ethAmount);
     _purchase(ethAmount, tokenAmount);
   }
 
@@ -47,9 +47,17 @@ contract XYTokenSale is XYKillable {
     price = _price;
   }
 
+  function getPrice() public view notKilled returns(uint) {
+    return price;
+  }
+
   function kill() public onlyOwner {
     token.transferFrom(this, owner, token.balanceOf(this));
     super.kill();
+  }
+
+  function _tokensFromEther(uint _ethAmount) internal notKilled view returns(uint){
+    return SafeMath.mul(_ethAmount, getPrice());
   }
 
   function _purchase(uint _ethAmount, uint _tokenAmount) internal notKilled {
