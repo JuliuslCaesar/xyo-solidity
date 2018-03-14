@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: gulpfile.js
  * @Last modified by:   arietrouw
- * @Last modified time: Wednesday, March 14, 2018 2:22 PM
+ * @Last modified time: Wednesday, March 14, 2018 4:12 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -36,6 +36,7 @@ const gulpCompile = through.obj((_file, encoding, callback) => {
         console.log(error[i]);
       }
     } else {
+      console.log(result.bytecode.length);
       const f = new Vinyl({
         contents: Buffer.from(JSON.stringify(result)), cwd: file.cwd, base: file.base, path: file.path,
       });
