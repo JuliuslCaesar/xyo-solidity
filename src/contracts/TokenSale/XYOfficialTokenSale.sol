@@ -6,25 +6,25 @@ import "./lib/XYVariablePrice.sol";
 contract XYOfficialTokenSale is XYEligibleTokenSale {
 
   uint numberSold = 0;
-  uint startVariablePrice; // = 100000000000000000000000; //18 places
-  uint endVariablePrice; // = 33333333333333333333333; //18 places
-  uint maxVariableAvailable; // = 36000000000; //0 places
-  uint maxFixedAvailable; // = 900000000000; //0 places
+  uint startPrice; // = 100000000000000000000000; //18 places
+  uint endPrice; // = 33333333333333333333333; //18 places
+  uint totalVariableTokens; // = 36000000000; //0 places
+  uint totalFixedTokens; // = 900000000000; //0 places
 
   function XYOfficialTokenSale(
       address _token,
       uint _minEther,
       uint _startTime,
       uint _endTime,
-      uint _startVariablePrice,
-      uint _endVariablePrice,
-      uint _maxVariableAvailable,
-      uint _maxFixedAvailable)
-  public XYEligibleTokenSale(_token, _startVariablePrice, _minEther, _startTime, _endTime) {
-    startVariablePrice = _startVariablePrice; //18 places
-    endVariablePrice = _endVariablePrice; //18 places
-    maxVariableAvailable = _maxVariableAvailable; //0 places
-    maxFixedAvailable = _maxFixedAvailable; //0 places
+      uint _startPrice,
+      uint _endPrice,
+      uint _totalVariableTokens,
+      uint _totalFixedTokens)
+  public XYEligibleTokenSale(_token, _startPrice, _minEther, _startTime, _endTime) {
+    startPrice = _startPrice; //18 places
+    endPrice = _endPrice; //18 places
+    totalVariableTokens = _totalVariableTokens; //0 places
+    totalFixedTokens = _totalFixedTokens; //0 places
   }
 
   function setPrice(uint) public onlyOwner notKilled {
@@ -41,7 +41,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
   }
 
   function _tokensFromEther(uint _ethAmount) internal view notKilled returns(uint){
-    return XYVariablePrice.getTokensForEther(numberSold, _ethAmount, startVariablePrice, endVariablePrice, maxVariableAvailable, maxFixedAvailable);
+    return XYVariablePrice.getTokensForEther(numberSold, _ethAmount, startPrice, endPrice, totalVariableTokens, totalFixedTokens);
   }
 
 }
