@@ -14,7 +14,7 @@ contract XYTokenSale is XYKillable {
   ERC20 public token; //address of the ERC20 token
   address public beneficiary; //address where the ETH payments go to
   uint private price; //price of tokens (how many tokens per ETH)
-  uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum)
+  uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum) 18 places
 
   event EtherAccepted(address seller, address buyer, uint amount);
   event TokensSent(address seller, address buyer, uint amount);

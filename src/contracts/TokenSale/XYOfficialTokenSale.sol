@@ -9,7 +9,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
   uint startPrice; // = 100000000000000000000000; //18 places
   uint endPrice; // = 33333333333333333333333; //18 places
   uint totalVariableTokens; // = 36000000000; //0 places
-  uint totalFixedTokens; // = 900000000000; //0 places
+  uint totalFixedTokens; // = 9000000000; //0 places
 
   function XYOfficialTokenSale(
       address _token,
