@@ -4,7 +4,7 @@ import "./XYKillable.sol";
 
 contract XYApprovable is XYKillable {
 
-    mapping (address => bool) private approvers;
+    mapping (address => bool) public approvers;
 
     function XYApprovable () public {
       approvers[msg.sender] = true;
