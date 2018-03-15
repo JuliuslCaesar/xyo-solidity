@@ -153,7 +153,7 @@ library XYVariablePrice {
     {
       return _endPrice; // returns the end price
     } else {
-      uint delta = (_endPrice - _startPrice) * _numberSold / _maxVariableAvailable; // the difference in price between the start price and the price at a given number of Tokens sold to-date [changed from (startPrice - endPrice)]
+      uint delta = (_startPrice - _endPrice) * _numberSold / _maxVariableAvailable; // the difference in price between the start price and the price at a given number of Tokens sold to-date [changed from (startPrice - endPrice)]
       return _startPrice + delta; // returns the price at a given number of Tokens sold to-dat
     }
   }
