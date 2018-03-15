@@ -9,10 +9,7 @@ contract XYTokenSale is XYKillable {
   using SafeMath
   for * ;
 
-  // Ownable->owner - address where tokens come from and unused tokens are returned to
-
   ERC20 public token; //address of the ERC20 token
-  address public beneficiary; //address where the ETH payments go to
   uint private price; //price of tokens (how many tokens per ETH)
   uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum) 18 places
 
@@ -26,12 +23,13 @@ contract XYTokenSale is XYKillable {
   }
 
   function() public notKilled payable {
+    uint ethAmount = msg.value;
+    uint tokenAmount = _tokensFromEther(ethAmount);
+
     require(tokenAmount <= getAvailableTokens());
     require(tokenAmount <= token.balanceOf(owner));
     require(ethAmount >= minEther || minEther == 0);
 
-    uint ethAmount = msg.value;
-    uint tokenAmount = _tokensFromEther(ethAmount);
     _purchase(ethAmount, tokenAmount);
   }
 
