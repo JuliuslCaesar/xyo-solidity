@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: index.js
  * @Last modified by:   arietrouw
- * @Last modified time: Wednesday, March 14, 2018 3:53 PM
+ * @Last modified time: Wednesday, March 14, 2018 5:27 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -37,7 +37,7 @@ class Contracts {
 
     const output = SOLC.compile({
       sources: input,
-    }, 0, findImports);
+    }, 1, findImports);
 
     process.chdir(cwd);
 
@@ -65,7 +65,7 @@ class Contracts {
 
     const output = SOLC.compile({
       sources: input,
-    }, 0, findImports);
+    }, 1, findImports);
 
     debug(`output: `, output);
 
