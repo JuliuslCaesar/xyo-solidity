@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
 import "./XYTimedTokenSale.sol";
-import "./lib/XYApprovable.sol";
+import "./XYApprovable.sol";
 
 contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
 

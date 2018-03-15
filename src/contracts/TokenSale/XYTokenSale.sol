@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
-import "./lib/ERC20.sol";
-import "./lib/XYKillable.sol";
+import "./ERC20.sol";
+import "./XYKillable.sol";
 import "./lib/SafeMath.sol";
 
 
