@@ -89,9 +89,8 @@ library XYVariablePrice {
       return 0; // return 0 Ether to spend on Variable-priced Tokens
     }
     uint remainingVariable = SafeMath.sub(_maxVariableAvailable, _numberSold);
-    uint middlePointOfRemaining = SafeMath.add(_numberSold, SafeMath.div(remainingVariable, 2));
-    uint middlePointPriceOfRemaining = _getPriceAtPoint(middlePointOfRemaining, _startPrice, _endPrice, _maxVariableAvailable); // price element for Ether calculation
-    return SafeMath.div(remainingVariable * 10 ** 18, middlePointPriceOfRemaining); // returns the maximum amount of Ether that can be spent on Variable-priced Tokens
+    uint currentPrice = _getCurrentPrice(_numberSold, _startPrice, _endPrice, _maxVariableAvailable); // price element for Ether calculation
+    return SafeMath.div(remainingVariable * 10 ** 18, currentPrice); // returns the maximum amount of Ether that can be spent on Variable-priced Tokens
   }
 
   // desired amount of Variable-priced Tokens given Ether input
@@ -100,10 +99,8 @@ library XYVariablePrice {
     {
       return 0; // return 0 Variable-priced Tokens
     } else {
-      uint variableRatio = _variableRatio(_startVariablePrice, _endVariablePrice, _maxVariableAvailable); // Variable Token price ratio used to calculate desired Variable-priced Token cost
-      uint etherToSpendOnRect = SafeMath.mul(_ether / 10 ** 9, variableRatio) / 10 ** 9; // Variable Token price at the start of the transaction. Both variable lengths in the calculation start with 10^18, so division by 10^9 is calculated to preserve the 10^18 length
-      uint rectTokensPerEther = _getPriceAtPoint(_numberSold, _startVariablePrice, _endVariablePrice, _maxVariableAvailable);
-      uint tokens = SafeMath.mul(etherToSpendOnRect / 10 ** 9, rectTokensPerEther / 10 ** 9); //amount of Variable-priced Tokens available given Ether input
+      uint currentPrice = _getCurrentPrice(_numberSold, _startVariablePrice, _endVariablePrice, _maxVariableAvailable); // price element for Ether calculation
+      uint tokens = SafeMath.mul(_ether / 10 ** 9, currentPrice / 10 ** 9); //amount of Variable-priced Tokens available given Ether input
       uint maxVariableTokens = _getMaxVariableAvailableForTransaction(_numberSold, _maxVariableAvailable); // maximum Variable-priced Tokens available
       if (tokens > maxVariableTokens) // check if there are more desired Variable-priced Tokens than the amount available
       {
@@ -158,7 +155,7 @@ library XYVariablePrice {
   }
 
   // this calculates the Token Price at the number of Tokens sold to-date
-  function _getPriceAtPoint(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) internal pure returns(uint) {
+  function _getCurrentPrice(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) internal pure returns(uint) {
     if (_numberSold >= _maxVariableAvailable) // check if Variable-priced are Tokens available
     {
       return _endPrice; // returns the end price
@@ -168,14 +165,6 @@ library XYVariablePrice {
       uint delta = SafeMath.mul(percentComplete / 10 ** 9, tokensPerEtherRange / 10 ** 9); // the difference in price between the start price and the price at a given number of Tokens sold to-date [changed from (startPrice - endPrice)]
       return SafeMath.add(_startPrice, delta); // returns the price at a given number of Tokens sold to-dat
     }
-  }
-
-  // the ratio of the variable cost to the cost contained in the rectangle calculated from the start and end price (18 places)
-  function _variableRatio(uint _startPrice, uint _endPrice, uint _maxVariableAvailable) internal pure returns(uint) {
-    uint tokensPerEtherRange = SafeMath.sub(_startPrice, _endPrice);
-    uint rect = SafeMath.mul(_maxVariableAvailable / 10 ** 9, _endPrice / 10 ** 9); // 18 places, area of the rectangle (total cost) calculated from the start and end price
-    uint triangle = SafeMath.div(SafeMath.mul(_maxVariableAvailable / 10 ** 9, tokensPerEtherRange / 10 ** 9), 2); //area of the triangle calculated from the midpoint of the start and end price that lies directly outside the rectangle
-    SafeMath.div(rect, SafeMath.add(rect, triangle) / 10 ** 9) * 10 ** 9; // returns the ratio of the the total cost contained within the rectangle
   }
 
   // the maximum amoung of Variable-priced Tokens available to-date
