@@ -23,28 +23,23 @@ contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
 
     //we store the pending eth in the contract
     function _acceptEther(uint _amount) internal {
-      if (address(this).send(_amount)) {
-        emit EtherAccepted(this, msg.sender, _amount);
-      } else {
-        revert();
-      }
+      pending[msg.sender].eth = pending[msg.sender].eth + _amount;
+      emit EtherAccepted(this, msg.sender, _amount);
     }
 
     //we store the pending tokens in the contracts
-    function _storeTokens(uint _amount) internal {
+    function _sendTokens(uint _amount) internal {
+      pending[msg.sender].tokens = pending[msg.sender].tokens + _amount;
       token.transferFrom(owner, this, _amount);
     }
 
     //broke this out so that we can call it internally for auto-approve
     function _approve(address _buyer) internal {
       if (pending[_buyer].tokens > 0) {
-        if (owner.send(pending[_buyer].eth)) {
-          token.transferFrom(this, _buyer, pending[_buyer].tokens);
-          pending[_buyer].tokens = 0;
-          pending[_buyer].eth = 0;
-        } else {
-          revert();
-        }
+        //owner.transfer(pending[_buyer].eth);
+        //token.transfer(_buyer, pending[_buyer].tokens);
+        pending[msg.sender].tokens = 0;
+        pending[msg.sender].eth = 0;
       }
     }
 

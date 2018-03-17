@@ -22,7 +22,7 @@ contract XYTokenSale is XYKillable {
     minEther = _minEther;
   }
 
-  function() public notKilled payable {
+  function purchase() public notKilled payable {
     uint ethAmount = msg.value;
     uint tokenAmount = _tokensFromEther(ethAmount);
 
@@ -55,7 +55,7 @@ contract XYTokenSale is XYKillable {
   }
 
   function _tokensFromEther(uint _ethAmount) internal notKilled view returns(uint){
-    return SafeMath.mul(_ethAmount, getPrice());
+    return SafeMath.div(_ethAmount, 1000000000) * SafeMath.div(getPrice(), 1000000000);
   }
 
   function _purchase(uint _ethAmount, uint _tokenAmount) internal notKilled {
