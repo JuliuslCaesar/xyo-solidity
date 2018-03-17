@@ -1,0 +1,4126 @@
+{
+  "contractName": "XYPendingTokenSale",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "minEther",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "approvers",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "endTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_startTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "setStartTime",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "kill",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "pending",
+      "outputs": [
+        {
+          "name": "eth",
+          "type": "uint256"
+        },
+        {
+          "name": "tokens",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "purchase",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "startTime",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_minEther",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMinEther",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isKilled",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getPrice",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isLive",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_endTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "setEndTime",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_approver",
+          "type": "address"
+        },
+        {
+          "name": "_enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprover",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAvailableTokens",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "name": "_minEther",
+          "type": "uint256"
+        },
+        {
+          "name": "_startTime",
+          "type": "uint256"
+        },
+        {
+          "name": "_endTime",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "EtherAccepted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "TokensSent",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b60405160a0806117e8833981016040528080519060200190919080519060200190919080519060200190919080519060200190919080519060200190919050508484848484848484336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555082600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508160028190555080600381905550505050816004819055508060058190555050505050506001600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050505050611680806101686000396000f300606060405260043610610112576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063051af15d146101175780630a144391146101405780633197cbb6146101915780633e0a322d146101ba57806341c0e1b5146101dd5780635eebea20146101f257806364edfbf01461024657806378e97925146102505780637aef1d4d146102795780638da5cb5b1461029c5780638fe8a101146102f157806391b7f5ed1461031e57806398d5fdca14610341578063b8f7a6651461036a578063ccb98ffc14610397578063d76fd2e7146103ba578063daea85c5146103fe578063e35568cb14610437578063f2fde38b14610460578063fc0c546a14610499575b600080fd5b341561012257600080fd5b61012a6104ee565b6040518082815260200191505060405180910390f35b341561014b57600080fd5b610177600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506104f4565b604051808215151515815260200191505060405180910390f35b341561019c57600080fd5b6101a4610514565b6040518082815260200191505060405180910390f35b34156101c557600080fd5b6101db600480803590602001909190505061051a565b005b34156101e857600080fd5b6101f061059b565b005b34156101fd57600080fd5b610229600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061081d565b604051808381526020018281526020019250505060405180910390f35b61024e610841565b005b341561025b57600080fd5b6102636109bf565b6040518082815260200191505060405180910390f35b341561028457600080fd5b61029a60048080359060200190919050506109c5565b005b34156102a757600080fd5b6102af610a46565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156102fc57600080fd5b610304610a6b565b604051808215151515815260200191505060405180910390f35b341561032957600080fd5b61033f6004808035906020019091905050610a81565b005b341561034c57600080fd5b610354610b02565b6040518082815260200191505060405180910390f35b341561037557600080fd5b61037d610b27565b604051808215151515815260200191505060405180910390f35b34156103a257600080fd5b6103b86004808035906020019091905050610b87565b005b34156103c557600080fd5b6103fc600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080351515906020019091905050610c08565b005b341561040957600080fd5b610435600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610cda565b005b341561044257600080fd5b61044a610d3e565b6040518082815260200191505060405180910390f35b341561046b57600080fd5b610497600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610e95565b005b34156104a457600080fd5b6104ac610fea565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60035481565b60066020528060005260406000206000915054906101000a900460ff1681565b60055481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561057557600080fd5b600060149054906101000a900460ff1615151561059157600080fd5b8060048190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105f657600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd306000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561071c57600080fd5b6102c65a03f1151561072d57600080fd5b505050604051805190506000604051602001526040518463ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019350505050602060405180830381600087803b15156107f757600080fd5b6102c65a03f1151561080857600080fd5b505050604051805190505061081b611010565b565b60076020528060005260406000206000915090508060000154908060010154905082565b600080600060149054906101000a900460ff1615151561086057600080fd5b34915061086c8261111c565b9050610876610d3e565b811115151561088457600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a082316000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561096a57600080fd5b6102c65a03f1151561097b57600080fd5b50505060405180519050811115151561099357600080fd5b600354821015806109a657506000600354145b15156109b157600080fd5b6109bb8282611164565b5050565b60045481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a2057600080fd5b600060149054906101000a900460ff16151515610a3c57600080fd5b8060038190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060149054906101000a900460ff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610adc57600080fd5b600060149054906101000a900460ff16151515610af857600080fd5b8060028190555050565b60008060149054906101000a900460ff16151515610b1f57600080fd5b600254905090565b60008060019050610b36610a6b565b15610b445760009050610b80565b60006004541115610b6357426004541115610b5e57600090505b610b7f565b60006005541115610b7e57426005541015610b7d57600090505b5b5b5b8091505090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610be257600080fd5b600060149054906101000a900460ff16151515610bfe57600080fd5b8060058190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610c6357600080fd5b600060149054906101000a900460ff16151515610c7f57600080fd5b80600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff161515610d3257600080fd5b610d3b816111a1565b50565b60008060149054906101000a900460ff16151515610d5b57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663dd62ed3e6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16306000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200192505050602060405180830381600087803b1515610e7557600080fd5b6102c65a03f11515610e8657600080fd5b50505060405180519050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610ef057600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610f2c57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561106b57600080fd5b600060149054906101000a900460ff1615151561108757600080fd5b6001600060146101000a81548160ff0219169083151502179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561111a57600080fd5b565b60008060149054906101000a900460ff1615151561113957600080fd5b61114e611144610b02565b633b9aca00611302565b61115c83633b9aca00611302565b029050919050565b61116c610b27565b151561117757600080fd5b600060149054906101000a900460ff1615151561119357600080fd5b61119d8282611329565b5050565b6000600760008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206001015411156112ff573073ffffffffffffffffffffffffffffffffffffffff166108fc600760008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001549081150290604051600060405180830381858888f19350505050151561126e57600080fd5b6000600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600101819055506000600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001819055505b50565b60008060008311151561131157fe5b828481151561131c57fe5b0490508091505092915050565b600060149054906101000a900460ff1615151561134557600080fd5b61134e8261135b565b61135781611488565b5050565b80600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000015401600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001819055507f01a6dd555a0168dd57f865ff16599bedf1cbe954ed60757e28cf137f079c70a8303383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a150565b80600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206001015401600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060010181905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1630846000604051602001526040518463ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019350505050602060405180830381600087803b151561163557600080fd5b6102c65a03f1151561164657600080fd5b5050506040518051905050505600a165627a7a72305820af80a98a0c5525f944054fe25e91170efecc1c669a9bb8e8edba72b3b7c28bc60029",
+  "deployedBytecode": "0x606060405260043610610112576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063051af15d146101175780630a144391146101405780633197cbb6146101915780633e0a322d146101ba57806341c0e1b5146101dd5780635eebea20146101f257806364edfbf01461024657806378e97925146102505780637aef1d4d146102795780638da5cb5b1461029c5780638fe8a101146102f157806391b7f5ed1461031e57806398d5fdca14610341578063b8f7a6651461036a578063ccb98ffc14610397578063d76fd2e7146103ba578063daea85c5146103fe578063e35568cb14610437578063f2fde38b14610460578063fc0c546a14610499575b600080fd5b341561012257600080fd5b61012a6104ee565b6040518082815260200191505060405180910390f35b341561014b57600080fd5b610177600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506104f4565b604051808215151515815260200191505060405180910390f35b341561019c57600080fd5b6101a4610514565b6040518082815260200191505060405180910390f35b34156101c557600080fd5b6101db600480803590602001909190505061051a565b005b34156101e857600080fd5b6101f061059b565b005b34156101fd57600080fd5b610229600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061081d565b604051808381526020018281526020019250505060405180910390f35b61024e610841565b005b341561025b57600080fd5b6102636109bf565b6040518082815260200191505060405180910390f35b341561028457600080fd5b61029a60048080359060200190919050506109c5565b005b34156102a757600080fd5b6102af610a46565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156102fc57600080fd5b610304610a6b565b604051808215151515815260200191505060405180910390f35b341561032957600080fd5b61033f6004808035906020019091905050610a81565b005b341561034c57600080fd5b610354610b02565b6040518082815260200191505060405180910390f35b341561037557600080fd5b61037d610b27565b604051808215151515815260200191505060405180910390f35b34156103a257600080fd5b6103b86004808035906020019091905050610b87565b005b34156103c557600080fd5b6103fc600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919080351515906020019091905050610c08565b005b341561040957600080fd5b610435600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610cda565b005b341561044257600080fd5b61044a610d3e565b6040518082815260200191505060405180910390f35b341561046b57600080fd5b610497600480803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610e95565b005b34156104a457600080fd5b6104ac610fea565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60035481565b60066020528060005260406000206000915054906101000a900460ff1681565b60055481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561057557600080fd5b600060149054906101000a900460ff1615151561059157600080fd5b8060048190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105f657600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd306000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561071c57600080fd5b6102c65a03f1151561072d57600080fd5b505050604051805190506000604051602001526040518463ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019350505050602060405180830381600087803b15156107f757600080fd5b6102c65a03f1151561080857600080fd5b505050604051805190505061081b611010565b565b60076020528060005260406000206000915090508060000154908060010154905082565b600080600060149054906101000a900460ff1615151561086057600080fd5b34915061086c8261111c565b9050610876610d3e565b811115151561088457600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a082316000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561096a57600080fd5b6102c65a03f1151561097b57600080fd5b50505060405180519050811115151561099357600080fd5b600354821015806109a657506000600354145b15156109b157600080fd5b6109bb8282611164565b5050565b60045481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a2057600080fd5b600060149054906101000a900460ff16151515610a3c57600080fd5b8060038190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060149054906101000a900460ff16905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610adc57600080fd5b600060149054906101000a900460ff16151515610af857600080fd5b8060028190555050565b60008060149054906101000a900460ff16151515610b1f57600080fd5b600254905090565b60008060019050610b36610a6b565b15610b445760009050610b80565b60006004541115610b6357426004541115610b5e57600090505b610b7f565b60006005541115610b7e57426005541015610b7d57600090505b5b5b5b8091505090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610be257600080fd5b600060149054906101000a900460ff16151515610bfe57600080fd5b8060058190555050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610c6357600080fd5b600060149054906101000a900460ff16151515610c7f57600080fd5b80600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff161515610d3257600080fd5b610d3b816111a1565b50565b60008060149054906101000a900460ff16151515610d5b57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663dd62ed3e6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16306000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200192505050602060405180830381600087803b1515610e7557600080fd5b6102c65a03f11515610e8657600080fd5b50505060405180519050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610ef057600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610f2c57600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561106b57600080fd5b600060149054906101000a900460ff1615151561108757600080fd5b6001600060146101000a81548160ff0219169083151502179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561111a57600080fd5b565b60008060149054906101000a900460ff1615151561113957600080fd5b61114e611144610b02565b633b9aca00611302565b61115c83633b9aca00611302565b029050919050565b61116c610b27565b151561117757600080fd5b600060149054906101000a900460ff1615151561119357600080fd5b61119d8282611329565b5050565b6000600760008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206001015411156112ff573073ffffffffffffffffffffffffffffffffffffffff166108fc600760008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001549081150290604051600060405180830381858888f19350505050151561126e57600080fd5b6000600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600101819055506000600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001819055505b50565b60008060008311151561131157fe5b828481151561131c57fe5b0490508091505092915050565b600060149054906101000a900460ff1615151561134557600080fd5b61134e8261135b565b61135781611488565b5050565b80600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000015401600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001819055507f01a6dd555a0168dd57f865ff16599bedf1cbe954ed60757e28cf137f079c70a8303383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001828152602001935050505060405180910390a150565b80600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206001015401600760003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060010181905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1630846000604051602001526040518463ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019350505050602060405180830381600087803b151561163557600080fd5b6102c65a03f1151561164657600080fd5b5050506040518051905050505600a165627a7a72305820af80a98a0c5525f944054fe25e91170efecc1c669a9bb8e8edba72b3b7c28bc60029",
+  "sourceMap": "89:1285:10:-;;;271:196;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;400:6;408;416:9;427:10;439:8;342:6:12;350;358:9;200:10:4;192:5;;:18;;;;;;;;;;;;;;;;;;619:6:13;605:5;;:21;;;;;;;;;;;;;;;;;;640:6;632:5;:14;;;;663:9;652:8;:20;;;;526:151;;;396:10:12;384:9;:22;;;;422:8;412:7;:18;;;;225:210;;;;;210:4:5;186:9;:21;196:10;186:21;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;271:196:10;;;;;89:1285;;;;;;",
+  "deployedSourceMap": "89:1285:10:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;290:20:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:42:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;168:19:12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;574:99;;;;;;;;;;;;;;;;;;;;;;;;;;1400:116:13;;;;;;;;;;;;;;221:43:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;681:330:13;;;;;;103:21:12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1131:95:13;;;;;;;;;;;;;;;;;;;;;;;;;;47:20:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;348:74:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1230:83:13;;;;;;;;;;;;;;;;;;;;;;;;;;1317:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;772:314:12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;677:91;;;;;;;;;;;;;;;;;;;;;;;;;;227:128:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;473:85:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;1015:112:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;290:169:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;173:18:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;290:20;;;;:::o;97:42:5:-;;;;;;;;;;;;;;;;;;;;;;:::o;168:19:12:-;;;;:::o;574:99::-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;658:10:12;646:9;:22;;;;574:99;:::o;1400:116:13:-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;1439:5:13;;;;;;;;;;;:18;;;1458:4;1464:5;;;;;;;;;;;1471;;;;;;;;;;;:15;;;1487:4;1471:21;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1439:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1499:12;:10;:12::i;:::-;1400:116::o;221:43:10:-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;681:330:13:-;732:14;764:16;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;749:9:13;732:26;;783:27;800:9;783:16;:27::i;:::-;764:46;;840:20;:18;:20::i;:::-;825:11;:35;;817:44;;;;;;;;890:5;;;;;;;;;;;:15;;;906:5;;;;;;;;;;;890:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;875:11;:37;;867:46;;;;;;;;940:8;;927:9;:21;;:38;;;;964:1;952:8;;:13;927:38;919:47;;;;;;;;973:33;983:9;994:11;973:9;:33::i;:::-;681:330;;:::o;103:21:12:-;;;;:::o;1131:95:13:-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1212:9:13;1201:8;:20;;;;1131:95;:::o;47:20:4:-;;;;;;;;;;;;;:::o;348:74:8:-;389:4;408:9;;;;;;;;;;;401:16;;348:74;:::o;1230:83:13:-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1302:6:13;1294:5;:14;;;;1230:83;:::o;1317:79::-;1367:4;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1386:5:13;;1379:12;;1317:79;:::o;772:314:12:-;810:4;822:9;834:4;822:16;;848:10;:8;:10::i;:::-;844:221;;;875:5;868:12;;844:221;;;909:1;897:9;;:13;893:172;;;936:3;924:9;;:15;920:52;;;958:5;951:12;;920:52;893:172;;;998:1;988:7;;:11;984:81;;;1023:3;1013:7;;:13;1009:50;;;1045:5;1038:12;;1009:50;984:81;893:172;844:221;1077:4;1070:11;;772:314;;:::o;677:91::-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;755:8:12;745:7;:18;;;;677:91;:::o;227:128:5:-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;340:8:5;317:9;:20;327:9;317:20;;;;;;;;;;;;;;;;:31;;;;;;;;;;;;;;;;;;227:128;;:::o;473:85:10:-;404:9:5;:21;414:10;404:21;;;;;;;;;;;;;;;;;;;;;;;;;396:30;;;;;;;;535:16:10;544:6;535:8;:16::i;:::-;473:85;:::o;1015:112:13:-;1075:4;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1094:5:13;;;;;;;;;;;:15;;;1110:5;;;;;;;;;;;1117:4;1094:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1087:35;;1015:112;:::o;290:169:4:-;268:5;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;386:1;366:22;;:8;:22;;;;358:31;;;;;;;;423:8;395:37;;416:5;;;;;;;;;;;395:37;;;;;;;;;;;;446:8;438:5;;:16;;;;;;;;;;;;;;;;;;290:169;:::o;173:18:13:-;;;;;;;;;;;;;:::o;231:113:8:-;268:5:4;;;;;;;;;;;254:19;;:10;:19;;;246:28;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;292:4;280:9;;:16;;;;;;;;;;;;;;;;;;302:5;;;;;;;;;;;:14;;:37;325:4;317:21;;;302:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;231:113::o;1520:173:13:-;1595:4;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1652:36:13;1665:10;:8;:10::i;:::-;1677;1652:12;:36::i;:::-;1613;1626:10;1638;1613:12;:36::i;:::-;:75;1606:82;;1520:173;;;:::o;439:131:12:-;1120:8;:6;:8::i;:::-;1112:17;;;;;;;;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;524:41:12;540:10;552:12;524:15;:41::i;:::-;439:131;;:::o;1085:286:10:-;1165:1;1140:7;:15;1148:6;1140:15;;;;;;;;;;;;;;;:22;;;:26;1136:229;;;1186:4;1178:22;;:43;1201:7;:15;1209:6;1201:15;;;;;;;;;;;;;;;:19;;;1178:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1318:1;1289:7;:19;1297:10;1289:19;;;;;;;;;;;;;;;:26;;:30;;;;1355:1;1329:7;:19;1337:10;1329:19;;;;;;;;;;;;;;;:23;;:27;;;;1136:229;1085:286;:::o;317:179:14:-;374:7;460:9;400:1;396;:5;389:13;;;;;;476:1;472;:5;;;;;;;;460:17;;490:1;483:8;;317:179;;;;;:::o;1697:140:13:-;520:9:8;;;;;;;;;;;519:10;511:19;;;;;;;;1777:24:13;1790:10;1777:12;:24::i;:::-;1807:25;1819:12;1807:11;:25::i;:::-;1697:140;;:::o;611:167:10:-;716:7;690;:19;698:10;690:19;;;;;;;;;;;;;;;:23;;;:33;664:7;:19;672:10;664:19;;;;;;;;;;;;;;;:23;;:59;;;;731:40;745:4;751:10;763:7;731:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;611:167;:::o;835:172::-;945:7;916;:19;924:10;916:19;;;;;;;;;;;;;;;:26;;;:36;887:7;:19;895:10;887:19;;;;;;;;;;;;;;;:26;;:65;;;;960:5;;;;;;;;;;;:18;;;979:5;;;;;;;;;;;986:4;992:7;960:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;835:172;:::o",
+  "source": "pragma solidity ^0.4.19;\n\nimport \"./XYTimedTokenSale.sol\";\nimport \"./XYApprovable.sol\";\n\ncontract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {\n\n    struct Pending {\n      uint eth;\n      uint tokens;\n    }\n\n    mapping (address => Pending) public pending;\n\n    function XYPendingTokenSale (address _token, uint _price, uint _minEther, uint _startTime, uint _endTime)\n      XYTimedTokenSale(_token, _price, _minEther, _startTime, _endTime)\n    public {\n    }\n\n    function approve(address _buyer) public onlyApprovers {\n      _approve(_buyer);\n    }\n\n    //we store the pending eth in the contract\n    function _acceptEther(uint _amount) internal {\n      pending[msg.sender].eth = pending[msg.sender].eth + _amount;\n      EtherAccepted(this, msg.sender, _amount);\n    }\n\n    //we store the pending tokens in the contracts\n    function _sendTokens(uint _amount) internal {\n      pending[msg.sender].tokens = pending[msg.sender].tokens + _amount;\n      token.transferFrom(owner, this, _amount);\n    }\n\n    //broke this out so that we can call it internally for auto-approve\n    function _approve(address _buyer) internal {\n      if (pending[_buyer].tokens > 0) {\n        address(this).transfer(pending[_buyer].eth);\n        //token.transfer(_buyer, pending[_buyer].tokens);\n        pending[msg.sender].tokens = 0;\n        pending[msg.sender].eth = 0;\n      }\n    }\n\n}\n",
+  "sourcePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYPendingTokenSale.sol",
+  "ast": {
+    "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYPendingTokenSale.sol",
+    "exportedSymbols": {
+      "XYPendingTokenSale": [
+        1188
+      ]
+    },
+    "id": 1189,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1044,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:10"
+      },
+      {
+        "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYTimedTokenSale.sol",
+        "file": "./XYTimedTokenSale.sol",
+        "id": 1045,
+        "nodeType": "ImportDirective",
+        "scope": 1189,
+        "sourceUnit": 1412,
+        "src": "26:32:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYApprovable.sol",
+        "file": "./XYApprovable.sol",
+        "id": 1046,
+        "nodeType": "ImportDirective",
+        "scope": 1189,
+        "sourceUnit": 685,
+        "src": "59:28:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 1047,
+              "name": "XYTimedTokenSale",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1411,
+              "src": "120:16:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_XYTimedTokenSale_$1411",
+                "typeString": "contract XYTimedTokenSale"
+              }
+            },
+            "id": 1048,
+            "nodeType": "InheritanceSpecifier",
+            "src": "120:16:10"
+          },
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 1049,
+              "name": "XYApprovable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 684,
+              "src": "138:12:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_XYApprovable_$684",
+                "typeString": "contract XYApprovable"
+              }
+            },
+            "id": 1050,
+            "nodeType": "InheritanceSpecifier",
+            "src": "138:12:10"
+          }
+        ],
+        "contractDependencies": [
+          634,
+          684,
+          922,
+          1411,
+          1675
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1188,
+        "linearizedBaseContracts": [
+          1188,
+          684,
+          1411,
+          1675,
+          922,
+          634
+        ],
+        "name": "XYPendingTokenSale",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "XYPendingTokenSale.Pending",
+            "id": 1055,
+            "members": [
+              {
+                "constant": false,
+                "id": 1052,
+                "name": "eth",
+                "nodeType": "VariableDeclaration",
+                "scope": 1055,
+                "src": "181:8:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1051,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "181:4:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1054,
+                "name": "tokens",
+                "nodeType": "VariableDeclaration",
+                "scope": 1055,
+                "src": "197:11:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1053,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:4:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Pending",
+            "nodeType": "StructDefinition",
+            "scope": 1188,
+            "src": "158:57:10",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1059,
+            "name": "pending",
+            "nodeType": "VariableDeclaration",
+            "scope": 1188,
+            "src": "221:43:10",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+            },
+            "typeName": {
+              "id": 1058,
+              "keyType": {
+                "id": 1056,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "230:7:10",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "221:28:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1057,
+                "name": "Pending",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 1055,
+                "src": "241:7:10",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Pending_$1055_storage_ptr",
+                  "typeString": "struct XYPendingTokenSale.Pending storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1079,
+              "nodeType": "Block",
+              "src": "460:7:10",
+              "statements": []
+            },
+            "id": 1080,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 1072,
+                    "name": "_token",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1061,
+                    "src": "400:6:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1073,
+                    "name": "_price",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1063,
+                    "src": "408:6:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1074,
+                    "name": "_minEther",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1065,
+                    "src": "416:9:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1075,
+                    "name": "_startTime",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1067,
+                    "src": "427:10:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1076,
+                    "name": "_endTime",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1069,
+                    "src": "439:8:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 1077,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1071,
+                  "name": "XYTimedTokenSale",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1411,
+                  "src": "383:16:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_XYTimedTokenSale_$1411_$",
+                    "typeString": "type(contract XYTimedTokenSale)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "383:65:10"
+              }
+            ],
+            "name": "XYPendingTokenSale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1070,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1061,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "300:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1060,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "300:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1063,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "316:11:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1062,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "316:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1065,
+                  "name": "_minEther",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "329:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "329:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1067,
+                  "name": "_startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "345:15:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "345:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1069,
+                  "name": "_endTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "362:13:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1068,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "362:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "299:77:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1078,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "460:0:10"
+            },
+            "scope": 1188,
+            "src": "271:196:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1091,
+              "nodeType": "Block",
+              "src": "527:31:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1088,
+                        "name": "_buyer",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1082,
+                        "src": "544:6:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1087,
+                      "name": "_approve",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1187,
+                      "src": "535:8:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1089,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "535:16:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1090,
+                  "nodeType": "ExpressionStatement",
+                  "src": "535:16:10"
+                }
+              ]
+            },
+            "id": 1092,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 1085,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1084,
+                  "name": "onlyApprovers",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 683,
+                  "src": "513:13:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "513:13:10"
+              }
+            ],
+            "name": "approve",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1083,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1082,
+                  "name": "_buyer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1092,
+                  "src": "490:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1081,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "489:16:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1086,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "527:0:10"
+            },
+            "scope": 1188,
+            "src": "473:85:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1118,
+              "nodeType": "Block",
+              "src": "656:122:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1109,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1097,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "664:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1100,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1098,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2400,
+                            "src": "672:3:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1099,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "672:10:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "664:19:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1101,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "eth",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1052,
+                      "src": "664:23:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1108,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1102,
+                            "name": "pending",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1059,
+                            "src": "690:7:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                            }
+                          },
+                          "id": 1105,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1103,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2400,
+                              "src": "698:3:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1104,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "698:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "690:19:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                            "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                          }
+                        },
+                        "id": 1106,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "eth",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1052,
+                        "src": "690:23:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "id": 1107,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1094,
+                        "src": "716:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "690:33:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "664:59:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1110,
+                  "nodeType": "ExpressionStatement",
+                  "src": "664:59:10"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1112,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2435,
+                        "src": "745:4:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1113,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2400,
+                          "src": "751:3:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1114,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "751:10:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1115,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1094,
+                        "src": "763:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 1111,
+                      "name": "EtherAccepted",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1434,
+                      "src": "731:13:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,address,uint256)"
+                      }
+                    },
+                    "id": 1116,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "731:40:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1117,
+                  "nodeType": "ExpressionStatement",
+                  "src": "731:40:10"
+                }
+              ]
+            },
+            "id": 1119,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_acceptEther",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1095,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1094,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1119,
+                  "src": "633:12:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1093,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "633:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "632:14:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1096,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "656:0:10"
+            },
+            "scope": 1188,
+            "src": "611:167:10",
+            "stateMutability": "nonpayable",
+            "superFunction": 1650,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1146,
+              "nodeType": "Block",
+              "src": "879:128:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1124,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "887:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1127,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1125,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2400,
+                            "src": "895:3:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1126,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "895:10:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "887:19:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1128,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1054,
+                      "src": "887:26:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1135,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1129,
+                            "name": "pending",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1059,
+                            "src": "916:7:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                            }
+                          },
+                          "id": 1132,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1130,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2400,
+                              "src": "924:3:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1131,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "924:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "916:19:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                            "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                          }
+                        },
+                        "id": 1133,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "tokens",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1054,
+                        "src": "916:26:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "id": 1134,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1121,
+                        "src": "945:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "916:36:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "887:65:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "887:65:10"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1141,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 582,
+                        "src": "979:5:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1142,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2435,
+                        "src": "986:4:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1143,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1121,
+                        "src": "992:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1138,
+                        "name": "token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1422,
+                        "src": "960:5:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$521",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 1140,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 372,
+                      "src": "960:18:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 1144,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "960:40:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1145,
+                  "nodeType": "ExpressionStatement",
+                  "src": "960:40:10"
+                }
+              ]
+            },
+            "id": 1147,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_sendTokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1121,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1147,
+                  "src": "856:12:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1120,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "856:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "855:14:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1123,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "879:0:10"
+            },
+            "scope": 1188,
+            "src": "835:172:10",
+            "stateMutability": "nonpayable",
+            "superFunction": 1674,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1186,
+              "nodeType": "Block",
+              "src": "1128:243:10",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 1157,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1152,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "1140:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1154,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1153,
+                          "name": "_buyer",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1149,
+                          "src": "1148:6:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1140:15:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1155,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1054,
+                      "src": "1140:22:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 1156,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1165:1:10",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "1140:26:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1185,
+                  "nodeType": "IfStatement",
+                  "src": "1136:229:10",
+                  "trueBody": {
+                    "id": 1184,
+                    "nodeType": "Block",
+                    "src": "1168:197:10",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "baseExpression": {
+                                  "argumentTypes": null,
+                                  "id": 1162,
+                                  "name": "pending",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1059,
+                                  "src": "1201:7:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                    "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                  }
+                                },
+                                "id": 1164,
+                                "indexExpression": {
+                                  "argumentTypes": null,
+                                  "id": 1163,
+                                  "name": "_buyer",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1149,
+                                  "src": "1209:6:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "1201:15:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                  "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                                }
+                              },
+                              "id": 1165,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "eth",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 1052,
+                              "src": "1201:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "id": 1159,
+                                  "name": "this",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2435,
+                                  "src": "1186:4:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                                    "typeString": "contract XYPendingTokenSale"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                                    "typeString": "contract XYPendingTokenSale"
+                                  }
+                                ],
+                                "id": 1158,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1178:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_$",
+                                  "typeString": "type(address)"
+                                },
+                                "typeName": "address"
+                              },
+                              "id": 1160,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1178:13:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "id": 1161,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1178:22:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 1166,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1178:43:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1167,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1178:43:10"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1174,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 1168,
+                                "name": "pending",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1059,
+                                "src": "1289:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                  "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                }
+                              },
+                              "id": 1171,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 1169,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2400,
+                                  "src": "1297:3:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 1170,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "1297:10:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1289:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                              }
+                            },
+                            "id": 1172,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "tokens",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1054,
+                            "src": "1289:26:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 1173,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1318:1:10",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "1289:30:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 1175,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1289:30:10"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1182,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 1176,
+                                "name": "pending",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1059,
+                                "src": "1329:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                  "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                }
+                              },
+                              "id": 1179,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 1177,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2400,
+                                  "src": "1337:3:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 1178,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "1337:10:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1329:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                              }
+                            },
+                            "id": 1180,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "eth",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1052,
+                            "src": "1329:23:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 1181,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1355:1:10",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "1329:27:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 1183,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1329:27:10"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "id": 1187,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_approve",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1150,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1149,
+                  "name": "_buyer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1187,
+                  "src": "1103:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1148,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1103:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1102:16:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1151,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1128:0:10"
+            },
+            "scope": 1188,
+            "src": "1085:286:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1189,
+        "src": "89:1285:10"
+      }
+    ],
+    "src": "0:1375:10"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYPendingTokenSale.sol",
+    "exportedSymbols": {
+      "XYPendingTokenSale": [
+        1188
+      ]
+    },
+    "id": 1189,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1044,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".19"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:10"
+      },
+      {
+        "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYTimedTokenSale.sol",
+        "file": "./XYTimedTokenSale.sol",
+        "id": 1045,
+        "nodeType": "ImportDirective",
+        "scope": 1189,
+        "sourceUnit": 1412,
+        "src": "26:32:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/arietrouw/xyoraclenetwork/xyo-solidity/src/contracts/TokenSale/XYApprovable.sol",
+        "file": "./XYApprovable.sol",
+        "id": 1046,
+        "nodeType": "ImportDirective",
+        "scope": 1189,
+        "sourceUnit": 685,
+        "src": "59:28:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 1047,
+              "name": "XYTimedTokenSale",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1411,
+              "src": "120:16:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_XYTimedTokenSale_$1411",
+                "typeString": "contract XYTimedTokenSale"
+              }
+            },
+            "id": 1048,
+            "nodeType": "InheritanceSpecifier",
+            "src": "120:16:10"
+          },
+          {
+            "arguments": [],
+            "baseName": {
+              "contractScope": null,
+              "id": 1049,
+              "name": "XYApprovable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 684,
+              "src": "138:12:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_XYApprovable_$684",
+                "typeString": "contract XYApprovable"
+              }
+            },
+            "id": 1050,
+            "nodeType": "InheritanceSpecifier",
+            "src": "138:12:10"
+          }
+        ],
+        "contractDependencies": [
+          634,
+          684,
+          922,
+          1411,
+          1675
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1188,
+        "linearizedBaseContracts": [
+          1188,
+          684,
+          1411,
+          1675,
+          922,
+          634
+        ],
+        "name": "XYPendingTokenSale",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "XYPendingTokenSale.Pending",
+            "id": 1055,
+            "members": [
+              {
+                "constant": false,
+                "id": 1052,
+                "name": "eth",
+                "nodeType": "VariableDeclaration",
+                "scope": 1055,
+                "src": "181:8:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1051,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "181:4:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1054,
+                "name": "tokens",
+                "nodeType": "VariableDeclaration",
+                "scope": 1055,
+                "src": "197:11:10",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1053,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:4:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Pending",
+            "nodeType": "StructDefinition",
+            "scope": 1188,
+            "src": "158:57:10",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1059,
+            "name": "pending",
+            "nodeType": "VariableDeclaration",
+            "scope": 1188,
+            "src": "221:43:10",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+            },
+            "typeName": {
+              "id": 1058,
+              "keyType": {
+                "id": 1056,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "230:7:10",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "221:28:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1057,
+                "name": "Pending",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 1055,
+                "src": "241:7:10",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Pending_$1055_storage_ptr",
+                  "typeString": "struct XYPendingTokenSale.Pending storage pointer"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1079,
+              "nodeType": "Block",
+              "src": "460:7:10",
+              "statements": []
+            },
+            "id": 1080,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 1072,
+                    "name": "_token",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1061,
+                    "src": "400:6:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1073,
+                    "name": "_price",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1063,
+                    "src": "408:6:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1074,
+                    "name": "_minEther",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1065,
+                    "src": "416:9:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1075,
+                    "name": "_startTime",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1067,
+                    "src": "427:10:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 1076,
+                    "name": "_endTime",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1069,
+                    "src": "439:8:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 1077,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1071,
+                  "name": "XYTimedTokenSale",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1411,
+                  "src": "383:16:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_XYTimedTokenSale_$1411_$",
+                    "typeString": "type(contract XYTimedTokenSale)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "383:65:10"
+              }
+            ],
+            "name": "XYPendingTokenSale",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1070,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1061,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "300:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1060,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "300:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1063,
+                  "name": "_price",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "316:11:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1062,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "316:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1065,
+                  "name": "_minEther",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "329:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1064,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "329:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1067,
+                  "name": "_startTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "345:15:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1066,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "345:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1069,
+                  "name": "_endTime",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1080,
+                  "src": "362:13:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1068,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "362:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "299:77:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1078,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "460:0:10"
+            },
+            "scope": 1188,
+            "src": "271:196:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1091,
+              "nodeType": "Block",
+              "src": "527:31:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1088,
+                        "name": "_buyer",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1082,
+                        "src": "544:6:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1087,
+                      "name": "_approve",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1187,
+                      "src": "535:8:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1089,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "535:16:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1090,
+                  "nodeType": "ExpressionStatement",
+                  "src": "535:16:10"
+                }
+              ]
+            },
+            "id": 1092,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [
+              {
+                "arguments": [],
+                "id": 1085,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1084,
+                  "name": "onlyApprovers",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 683,
+                  "src": "513:13:10",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "513:13:10"
+              }
+            ],
+            "name": "approve",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1083,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1082,
+                  "name": "_buyer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1092,
+                  "src": "490:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1081,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "489:16:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1086,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "527:0:10"
+            },
+            "scope": 1188,
+            "src": "473:85:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1118,
+              "nodeType": "Block",
+              "src": "656:122:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1109,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1097,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "664:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1100,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1098,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2400,
+                            "src": "672:3:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1099,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "672:10:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "664:19:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1101,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "eth",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1052,
+                      "src": "664:23:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1108,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1102,
+                            "name": "pending",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1059,
+                            "src": "690:7:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                            }
+                          },
+                          "id": 1105,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1103,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2400,
+                              "src": "698:3:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1104,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "698:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "690:19:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                            "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                          }
+                        },
+                        "id": 1106,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "eth",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1052,
+                        "src": "690:23:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "id": 1107,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1094,
+                        "src": "716:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "690:33:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "664:59:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1110,
+                  "nodeType": "ExpressionStatement",
+                  "src": "664:59:10"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1112,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2435,
+                        "src": "745:4:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1113,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2400,
+                          "src": "751:3:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1114,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "751:10:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1115,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1094,
+                        "src": "763:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 1111,
+                      "name": "EtherAccepted",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1434,
+                      "src": "731:13:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,address,uint256)"
+                      }
+                    },
+                    "id": 1116,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "731:40:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1117,
+                  "nodeType": "ExpressionStatement",
+                  "src": "731:40:10"
+                }
+              ]
+            },
+            "id": 1119,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_acceptEther",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1095,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1094,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1119,
+                  "src": "633:12:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1093,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "633:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "632:14:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1096,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "656:0:10"
+            },
+            "scope": 1188,
+            "src": "611:167:10",
+            "stateMutability": "nonpayable",
+            "superFunction": 1650,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1146,
+              "nodeType": "Block",
+              "src": "879:128:10",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1124,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "887:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1127,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1125,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2400,
+                            "src": "895:3:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1126,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "895:10:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "887:19:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1128,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1054,
+                      "src": "887:26:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 1135,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 1129,
+                            "name": "pending",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1059,
+                            "src": "916:7:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                              "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                            }
+                          },
+                          "id": 1132,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1130,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2400,
+                              "src": "924:3:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1131,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "924:10:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "916:19:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                            "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                          }
+                        },
+                        "id": 1133,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "tokens",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1054,
+                        "src": "916:26:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "id": 1134,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1121,
+                        "src": "945:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "916:36:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "887:65:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 1137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "887:65:10"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1141,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 582,
+                        "src": "979:5:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1142,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2435,
+                        "src": "986:4:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1143,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1121,
+                        "src": "992:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                          "typeString": "contract XYPendingTokenSale"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1138,
+                        "name": "token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1422,
+                        "src": "960:5:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ERC20_$521",
+                          "typeString": "contract ERC20"
+                        }
+                      },
+                      "id": 1140,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 372,
+                      "src": "960:18:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 1144,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "960:40:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1145,
+                  "nodeType": "ExpressionStatement",
+                  "src": "960:40:10"
+                }
+              ]
+            },
+            "id": 1147,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_sendTokens",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1121,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1147,
+                  "src": "856:12:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1120,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "856:4:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "855:14:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1123,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "879:0:10"
+            },
+            "scope": 1188,
+            "src": "835:172:10",
+            "stateMutability": "nonpayable",
+            "superFunction": 1674,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1186,
+              "nodeType": "Block",
+              "src": "1128:243:10",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 1157,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1152,
+                          "name": "pending",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1059,
+                          "src": "1140:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                            "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                          }
+                        },
+                        "id": 1154,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 1153,
+                          "name": "_buyer",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1149,
+                          "src": "1148:6:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1140:15:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                          "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                        }
+                      },
+                      "id": 1155,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "tokens",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1054,
+                      "src": "1140:22:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "30",
+                      "id": 1156,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1165:1:10",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "src": "1140:26:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1185,
+                  "nodeType": "IfStatement",
+                  "src": "1136:229:10",
+                  "trueBody": {
+                    "id": 1184,
+                    "nodeType": "Block",
+                    "src": "1168:197:10",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "baseExpression": {
+                                  "argumentTypes": null,
+                                  "id": 1162,
+                                  "name": "pending",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1059,
+                                  "src": "1201:7:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                    "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                  }
+                                },
+                                "id": 1164,
+                                "indexExpression": {
+                                  "argumentTypes": null,
+                                  "id": 1163,
+                                  "name": "_buyer",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 1149,
+                                  "src": "1209:6:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "IndexAccess",
+                                "src": "1201:15:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                  "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                                }
+                              },
+                              "id": 1165,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "eth",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 1052,
+                              "src": "1201:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "id": 1159,
+                                  "name": "this",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2435,
+                                  "src": "1186:4:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                                    "typeString": "contract XYPendingTokenSale"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_contract$_XYPendingTokenSale_$1188",
+                                    "typeString": "contract XYPendingTokenSale"
+                                  }
+                                ],
+                                "id": 1158,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1178:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_address_$",
+                                  "typeString": "type(address)"
+                                },
+                                "typeName": "address"
+                              },
+                              "id": 1160,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1178:13:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "id": 1161,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "transfer",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1178:22:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 1166,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1178:43:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 1167,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1178:43:10"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1174,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 1168,
+                                "name": "pending",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1059,
+                                "src": "1289:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                  "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                }
+                              },
+                              "id": 1171,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 1169,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2400,
+                                  "src": "1297:3:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 1170,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "1297:10:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1289:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                              }
+                            },
+                            "id": 1172,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "tokens",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1054,
+                            "src": "1289:26:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 1173,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1318:1:10",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "1289:30:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 1175,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1289:30:10"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1182,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "baseExpression": {
+                                "argumentTypes": null,
+                                "id": 1176,
+                                "name": "pending",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1059,
+                                "src": "1329:7:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Pending_$1055_storage_$",
+                                  "typeString": "mapping(address => struct XYPendingTokenSale.Pending storage ref)"
+                                }
+                              },
+                              "id": 1179,
+                              "indexExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 1177,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 2400,
+                                  "src": "1337:3:10",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 1178,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "sender",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "1337:10:10",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1329:19:10",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Pending_$1055_storage",
+                                "typeString": "struct XYPendingTokenSale.Pending storage ref"
+                              }
+                            },
+                            "id": 1180,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "eth",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1052,
+                            "src": "1329:23:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "30",
+                            "id": 1181,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1355:1:10",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          },
+                          "src": "1329:27:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 1183,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1329:27:10"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "id": 1187,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_approve",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1150,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1149,
+                  "name": "_buyer",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1187,
+                  "src": "1103:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1148,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1103:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1102:16:10"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1151,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1128:0:10"
+            },
+            "scope": 1188,
+            "src": "1085:286:10",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1189,
+        "src": "89:1285:10"
+      }
+    ],
+    "src": "0:1375:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-03-17T21:53:36.024Z"
+}

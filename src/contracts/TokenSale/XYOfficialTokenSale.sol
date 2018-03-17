@@ -5,11 +5,11 @@ import "./lib/XYVariablePrice.sol";
 
 contract XYOfficialTokenSale is XYEligibleTokenSale {
 
-  uint numberSold = 0;
-  uint startPrice; // 18 places
-  uint endPrice; // 18 places
-  uint totalVariableTokens; // 0 places
-  uint totalFixedTokens; // 0 places
+  uint public numberSold = 0;
+  uint public startPrice; // 18 places
+  uint public endPrice; // 18 places
+  uint public totalVariableTokens; // 0 places
+  uint public totalFixedTokens; // 0 places
 
   function XYOfficialTokenSale(
       address _token,
@@ -36,7 +36,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
     return _tokensFromEther(1);
   }
 
-  function predictCost(uint _ethAmount) public view notKilled returns(uint) {
+  function predictTokensForEther(uint _ethAmount) public view notKilled returns(uint) {
     return _tokensFromEther(_ethAmount);
   }
 

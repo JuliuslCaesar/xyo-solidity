@@ -24,7 +24,7 @@ contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
     //we store the pending eth in the contract
     function _acceptEther(uint _amount) internal {
       pending[msg.sender].eth = pending[msg.sender].eth + _amount;
-      emit EtherAccepted(this, msg.sender, _amount);
+      EtherAccepted(this, msg.sender, _amount);
     }
 
     //we store the pending tokens in the contracts
@@ -36,7 +36,7 @@ contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
     //broke this out so that we can call it internally for auto-approve
     function _approve(address _buyer) internal {
       if (pending[_buyer].tokens > 0) {
-        //owner.transfer(pending[_buyer].eth);
+        address(this).transfer(pending[_buyer].eth);
         //token.transfer(_buyer, pending[_buyer].tokens);
         pending[msg.sender].tokens = 0;
         pending[msg.sender].eth = 0;

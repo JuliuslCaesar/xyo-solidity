@@ -65,12 +65,12 @@ contract XYTokenSale is XYKillable {
 
   function _acceptEther(uint _amount) internal notKilled {
     owner.transfer(_amount);
-    emit EtherAccepted(owner, msg.sender, _amount);
+    EtherAccepted(owner, msg.sender, _amount);
   }
 
   function _sendTokens(uint _amount) internal notKilled {
     token.transferFrom(owner, msg.sender, _amount);
-    emit TokensSent(owner, msg.sender, _amount);
+    TokensSent(owner, msg.sender, _amount);
   }
 
 }
