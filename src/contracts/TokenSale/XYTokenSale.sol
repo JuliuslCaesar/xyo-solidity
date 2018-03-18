@@ -28,7 +28,7 @@ contract XYTokenSale is XYKillable {
 
     require(tokenAmount <= getAvailableTokens());
     require(tokenAmount <= token.balanceOf(owner));
-    require(ethAmount >= minEther || minEther == 0);
+    require(ethAmount >= minEther);
 
     _purchase(ethAmount, tokenAmount);
   }
