@@ -46,6 +46,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "gulp": "^3.9.1",
+    "gulp-connect": "^5.5.0",
+    "gulp-debug-streams": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "node-glob": "^1.2.0",
     "npm": "^5.7.1",

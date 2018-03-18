@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: index.js
  * @Last modified by:   arietrouw
- * @Last modified time: Wednesday, March 14, 2018 5:27 PM
+ * @Last modified time: Sunday, March 18, 2018 11:34 AM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -35,14 +35,25 @@ class Contracts {
       };
     };
 
-    const output = SOLC.compile({
+    const solcConfig = {
       sources: input,
-    }, 1, findImports);
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 500,
+        },
+        outputSelection: {
+          "*": [`metadata`, `evm.bytecode`],
+        },
+      },
+    };
+
+    const output = SOLC.compile(solcConfig, 1, findImports);
 
     process.chdir(cwd);
 
     if (output.errors && output.errors.length > 0) {
-      callback(output.errors, null);
+      callback(output.errors, output.contracts[`${filename}:${root}`]);
     } else {
       callback(null, output.contracts[`${filename}:${root}`]);
     }
