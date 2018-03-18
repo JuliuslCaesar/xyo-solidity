@@ -73,7 +73,7 @@ library XYVariablePrice {
   // desired amount of Fixed-priced Tokens given Ether input, potentially for the final Transaction if Ether input is larger than Token availability
   function _getDesiredFixedTokensForEther(uint _numberSold, uint _ether, uint _endVariablePrice, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
     uint maxFixedAvailableForTransaction = _getMaxFixedAvailableForTransaction(_numberSold, _maxVariableAvailable, _maxFixedAvailable);
-    uint desiredFixedTokens = SafeMath.mul(_ether / 10 ** 9, _endVariablePrice / 10 ** 9);
+    uint desiredFixedTokens = SafeMath.mul(_ether, _endVariablePrice) / 10 ** 18;
     if (desiredFixedTokens <= maxFixedAvailableForTransaction) // check if all desired Tokens can be fulfilled by Fixed-priced Tokens
     {
       return desiredFixedTokens; // return all desired tokens as Fixed-priced Tokens
@@ -100,7 +100,7 @@ library XYVariablePrice {
       return 0; // return 0 Variable-priced Tokens
     } else {
       uint currentPrice = _getCurrentPrice(_numberSold, _startVariablePrice, _endVariablePrice, _maxVariableAvailable); // price element for Ether calculation
-      uint tokens = SafeMath.mul(_ether / 10 ** 9, currentPrice / 10 ** 9); //amount of Variable-priced Tokens available given Ether input
+      uint tokens = SafeMath.mul(_ether, currentPrice) / 10 ** 18; //amount of Variable-priced Tokens available given Ether input
       uint maxVariableTokens = _getMaxVariableAvailableForTransaction(_numberSold, _maxVariableAvailable); // maximum Variable-priced Tokens available
       if (tokens > maxVariableTokens) // check if there are more desired Variable-priced Tokens than the amount available
       {
@@ -116,7 +116,7 @@ library XYVariablePrice {
     if (_maxVariableAvailable > _numberSold) // check if there are Variable-priced Tokens available
     {
       return _maxFixedAvailable * _endPrice; // returns the maximum amount of Ether that can be spent on Fixed-priced Tokens
-    } else if (SafeMath.add(_maxVariableAvailable, _maxFixedAvailable) <= _numberSold) // case where there are no Tokens available
+    } else if (_numberSold >= SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // case where there are no Tokens available
     {
       return 0;
     } else // case where there not Variable-priced Tokens available
@@ -127,7 +127,7 @@ library XYVariablePrice {
 
   // the remaining Fixed-price Tokens available to-date
   function _getRemainingFixed(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
-    if (_numberSold >= SafeMath.add(_maxFixedAvailable, _maxVariableAvailable)) // check if there are Tokens available
+    if (_numberSold >= SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // check if there are Tokens available
     {
       return 0; // return 0 Fixed-priced Tokens
     } else if (_numberSold >= _maxVariableAvailable) // case where
@@ -140,12 +140,12 @@ library XYVariablePrice {
 
   // the maximum amount of Fixed-priced Tokens available to-date
   function _getMaxFixedAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
-    if (_numberSold > SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // make sure Tokens are available for Transaction
+    if (_numberSold >= SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // make sure Tokens are available for Transaction
     {
       return 0;
     }
 
-    if (_numberSold < _maxVariableAvailable) // check if Variable-priced Tokens are available
+    if (_numberSold <= _maxVariableAvailable) // check if Variable-priced Tokens are available
     {
       return _maxFixedAvailable; // return maximum amount of Fixed-priced Tokens
     } else {
@@ -162,8 +162,8 @@ library XYVariablePrice {
     } else {
       uint tokensPerEtherRange = SafeMath.sub(_startPrice, _endPrice);
       uint percentComplete = SafeMath.div(_numberSold, _maxVariableAvailable / 10 ** 9) * 10 ** 9;
-      uint delta = SafeMath.mul(percentComplete / 10 ** 9, tokensPerEtherRange / 10 ** 9); // the difference in price between the start price and the price at a given number of Tokens sold to-date [changed from (startPrice - endPrice)]
-      return SafeMath.add(_startPrice, delta); // returns the price at a given number of Tokens sold to-dat
+      uint delta = SafeMath.mul(percentComplete, tokensPerEtherRange / 10 ** 9) / 10 ** 9; // the difference in price between the start price and the price at a given number of Tokens sold to-date [changed from (startPrice - endPrice)]
+      return SafeMath.sub(_startPrice, delta); // returns the price at a given number of Tokens sold to-date
     }
   }
 
