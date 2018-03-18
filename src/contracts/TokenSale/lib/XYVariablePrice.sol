@@ -17,6 +17,8 @@ library XYVariablePrice {
     uint _maxVariableAvailable, // 0 places, total Variable-priced Tokens available at start of Token Sale
     uint _maxFixedAvailable) // 0 places, total Fixed-priced Tokens available at start of Token Sale prior
   internal pure returns(uint) {
+
+    //what if these values overflow?
     uint maxVariableAvailable = _maxVariableAvailable * 10 ** 18;
     uint maxFixedAvailable = _maxFixedAvailable * 10 ** 18;
     if (_numberSold >= maxVariableAvailable + maxFixedAvailable) // make sure Tokens are available for Transaction
@@ -138,7 +140,7 @@ library XYVariablePrice {
     }
   }
 
-  // the maximum amoung of Fixed-priced Tokens available to-date
+  // the maximum amount of Fixed-priced Tokens available to-date
   function _getMaxFixedAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
     if (_numberSold > SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // make sure Tokens are available for Transaction
     {
