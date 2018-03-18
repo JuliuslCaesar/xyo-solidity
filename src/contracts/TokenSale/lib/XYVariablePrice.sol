@@ -138,7 +138,7 @@ library XYVariablePrice {
     }
   }
 
-  // the maximum amoung of Fixed-priced Tokens available to-date
+  // the maximum amount of Fixed-priced Tokens available to-date
   function _getMaxFixedAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
     if (_numberSold > SafeMath.add(_maxVariableAvailable, _maxFixedAvailable)) // make sure Tokens are available for Transaction
     {
