@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: solidity.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 11:34 AM
+ * @Last modified time: Sunday, March 18, 2018 12:44 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -45,7 +45,6 @@ const compile = through.obj((_file, encoding, callback) => {
     const f = new Vinyl({
       contents: Buffer.from(JSON.stringify(result)), cwd: file.cwd, base: file.base, path: file.path,
     });
-    console.log(JSON.stringify(result));
     callback(null, f);
   });
 });
