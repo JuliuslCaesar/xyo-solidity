@@ -22,7 +22,11 @@ contract XYTokenSale is XYKillable {
     minEther = _minEther;
   }
 
-  function purchase() public notKilled payable {
+  function () public onlyNotKilled payable {
+    purchase();
+  }
+
+  function purchase() public onlyNotKilled payable {
     uint ethAmount = msg.value;
     uint tokenAmount = _tokensFromEther(ethAmount);
 
@@ -33,19 +37,19 @@ contract XYTokenSale is XYKillable {
     _purchase(ethAmount, tokenAmount);
   }
 
-  function getAvailableTokens() public view notKilled returns(uint) {
+  function getAvailableTokens() public view onlyNotKilled returns(uint) {
     return token.allowance(owner, this);
   }
 
-  function setMinEther(uint _minEther) public onlyOwner notKilled {
+  function setMinEther(uint _minEther) public onlyOwner onlyNotKilled {
     minEther = _minEther;
   }
 
-  function setPrice(uint _price) public onlyOwner notKilled {
+  function setPrice(uint _price) public onlyOwner onlyNotKilled {
     price = _price;
   }
 
-  function getPrice() public view notKilled returns(uint) {
+  function getPrice() public view onlyNotKilled returns(uint) {
     return price;
   }
 
@@ -54,21 +58,21 @@ contract XYTokenSale is XYKillable {
     super.kill();
   }
 
-  function _tokensFromEther(uint _ethAmount) internal notKilled view returns(uint){
+  function _tokensFromEther(uint _ethAmount) internal onlyNotKilled view returns(uint){
     return SafeMath.div(_ethAmount, 1000000000) * SafeMath.div(getPrice(), 1000000000);
   }
 
-  function _purchase(uint _ethAmount, uint _tokenAmount) internal notKilled {
+  function _purchase(uint _ethAmount, uint _tokenAmount) internal onlyNotKilled {
     _acceptEther(_ethAmount);
     _sendTokens(_tokenAmount);
   }
 
-  function _acceptEther(uint _amount) internal notKilled {
+  function _acceptEther(uint _amount) internal onlyNotKilled {
     owner.transfer(_amount);
     EtherAccepted(owner, msg.sender, _amount);
   }
 
-  function _sendTokens(uint _amount) internal notKilled {
+  function _sendTokens(uint _amount) internal onlyNotKilled {
     token.transferFrom(owner, msg.sender, _amount);
     TokensSent(owner, msg.sender, _amount);
   }

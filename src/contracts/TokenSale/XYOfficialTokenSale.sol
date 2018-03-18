@@ -5,7 +5,7 @@ import "./lib/XYVariablePrice.sol";
 
 contract XYOfficialTokenSale is XYEligibleTokenSale {
 
-  uint public numberSold = 0;
+  uint public numberSold;
   uint public startPrice; // 18 places
   uint public endPrice; // 18 places
   uint public totalVariableTokens; // 0 places
@@ -27,21 +27,27 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
     totalFixedTokens = _totalFixedTokens; //0 places
   }
 
-  function setPrice(uint) public onlyOwner notKilled {
+  function _sendTokens(uint _amount) internal {
+    super._sendTokens(_amount);
+    numberSold = numberSold + _amount * 1000;
+  }
+
+  function setPrice(uint) public onlyOwner onlyNotKilled {
     //price is not settable from outside
     revert();
   }
 
-  function getPrice() public view notKilled returns(uint) {
-    return _tokensFromEther(1);
+  function getPrice() public view onlyNotKilled returns(uint) {
+    return _tokensFromEther(1000000000000000000);
   }
 
-  function predictTokensForEther(uint _ethAmount) public view notKilled returns(uint) {
+  function predictTokensForEther(uint _ethAmount) public view onlyNotKilled returns(uint) {
     return _tokensFromEther(_ethAmount);
   }
 
-  function _tokensFromEther(uint _ethAmount) internal view notKilled returns(uint){
-    return XYVariablePrice.getTokensForEther(numberSold, _ethAmount, startPrice, endPrice, totalVariableTokens, totalFixedTokens);
+  function _tokensFromEther(uint _ethAmount) internal view onlyNotKilled returns(uint){
+    uint ns = 400000000 * 10**18;
+    return XYVariablePrice.getTokensForEther(ns, _ethAmount, startPrice, endPrice, totalVariableTokens, totalFixedTokens);
   }
 
 }

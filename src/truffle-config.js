@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: truffle-config.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 17, 2018 1:19 PM
+ * @Last modified time: Saturday, March 17, 2018 11:54 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -13,5 +13,12 @@
 // to customize your Truffle configuration!
 
 module.exports = {
-  contracts_build_directory: `../dist`,
+  contracts_build_directory: `./dist/contracts`,
+  networks: {
+    development: {
+      host: `127.0.0.1`,
+      port: 9545,
+      network_id: `*`, // Match any network id
+    },
+  },
 };

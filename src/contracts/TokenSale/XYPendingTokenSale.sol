@@ -1,9 +1,10 @@
 pragma solidity ^0.4.19;
 
 import "./XYTimedTokenSale.sol";
+import "./XYBlockable.sol";
 import "./XYApprovable.sol";
 
-contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
+contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable, XYBlockable {
 
     struct Pending {
       uint eth;
@@ -36,10 +37,10 @@ contract XYPendingTokenSale is XYTimedTokenSale, XYApprovable {
     //broke this out so that we can call it internally for auto-approve
     function _approve(address _buyer) internal {
       if (pending[_buyer].tokens > 0) {
-        address(this).transfer(pending[_buyer].eth);
-        //token.transfer(_buyer, pending[_buyer].tokens);
-        pending[msg.sender].tokens = 0;
-        pending[msg.sender].eth = 0;
+        _buyer.transfer(pending[_buyer].eth);
+        token.transfer(_buyer, pending[_buyer].tokens);
+        pending[_buyer].tokens = 0;
+        pending[_buyer].eth = 0;
       }
     }
 

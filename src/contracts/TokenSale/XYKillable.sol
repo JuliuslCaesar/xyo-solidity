@@ -3,26 +3,22 @@ pragma solidity ^0.4.19;
 import "./Ownable.sol";
 
 contract XYKillable is Ownable {
-  bool private _isKilled;
+  bool public killed;
 
   // this marks the contract dead forever - no more transactions
   // flushes all ETH from the contract to the seller
-  function kill() public onlyOwner notKilled {
-    _isKilled = true;
+  function kill() public onlyOwner onlyNotKilled {
+    killed = true;
     owner.transfer(address(this).balance);
   }
 
-  function isKilled() public view returns (bool) {
-    return _isKilled;
-  }
-
-  modifier killed() {
-    require(_isKilled);
+  modifier onlyKilled() {
+    require(killed);
     _;
   }
 
-  modifier notKilled() {
-    require(!_isKilled);
+  modifier onlyNotKilled() {
+    require(!killed);
     _;
   }
 }

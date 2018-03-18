@@ -10,7 +10,7 @@ contract XYApprovable is XYKillable {
       approvers[msg.sender] = true;
     }
 
-    function setApprover(address _approver, bool _enabled) public onlyOwner notKilled {
+    function setApprover(address _approver, bool _enabled) public onlyOwner onlyNotKilled {
       approvers[_approver] = _enabled;
     }
 

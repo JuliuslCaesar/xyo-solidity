@@ -1,18 +1,14 @@
 pragma solidity ^0.4.19;
 
-import "./XYBlockable.sol";
+import "./XYApprovable.sol";
 
-contract XYProofOfEligibility is XYBlockable {
+contract XYProofOfEligibility is XYApprovable {
 
   // Stores a mapping of wallet eligibility state
   // The address can be whatever the caller wants
   // 0 = Not yet XYEligible
   // setting eligibility is permanent
-  mapping(address => address) private eligible;
-
-  function getEligiblity(address _wallet) public view returns (address) {
-    return eligible[_wallet];
-  }
+  mapping(address => address) public eligible;
 
   function setEligiblity(address _wallet, address _proof) public onlyApprovers {
     require(eligible[_wallet] == 0);

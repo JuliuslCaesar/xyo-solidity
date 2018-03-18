@@ -14,21 +14,21 @@ contract XYTimedTokenSale is XYTokenSale {
     endTime = _endTime;
   }
 
-  function _purchase(uint _ethAmount, uint _tokenAmount) internal live notKilled {
+  function _purchase(uint _ethAmount, uint _tokenAmount) internal live onlyNotKilled {
     super._purchase(_ethAmount, _tokenAmount);
   }
 
-  function setStartTime(uint _startTime) public onlyOwner notKilled {
+  function setStartTime(uint _startTime) public onlyOwner onlyNotKilled {
     startTime = _startTime;
   }
 
-  function setEndTime(uint _endTime) public onlyOwner notKilled {
+  function setEndTime(uint _endTime) public onlyOwner onlyNotKilled {
     endTime = _endTime;
   }
 
   function isLive() public view returns(bool) {
     bool live = true;
-    if (isKilled()) {
+    if (killed) {
       live = false;
     } else if (startTime > 0) {
       if (startTime > now) {

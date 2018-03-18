@@ -1,24 +1,16 @@
 pragma solidity ^0.4.19;
 
-import "./XYApprovable.sol";
+import "./Ownable.sol";
 
-contract XYBlockable is XYApprovable {
+contract XYBlockable is Ownable{
 
   // we need to block, but do not want to allow for future calls from a wallet, but keep the
   // previous wallet data address intact for our records
   // blocking is permanent
-  mapping(address => bool) private blocked;
+  mapping(address => bool) public blocked;
 
-  function XYBlockable() public {
-    setApprover(msg.sender, true);
-  }
-
-  function blockAddress(address _address) public onlyOwner notKilled {
+  function blockAddress(address _address) public onlyOwner {
     blocked[_address] = true;
-  }
-
-  function isBlocked(address _address) public view returns(bool) {
-    return blocked[_address];
   }
 
   modifier onlyNotBlocked() {
