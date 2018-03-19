@@ -41,6 +41,10 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
     return _tokensFromEther(1000000000000000000);
   }
 
+  function predictTokensForEther(uint _ethAmount) public view onlyNotKilled returns(uint) {
+    return predictTokensForEther(_ethAmount, numberSold);
+  }
+
   function predictTokensForEther(uint _ethAmount, uint _numberSold) public view onlyNotKilled returns(uint) {
     return XYVariablePrice.getTokensForEther(_numberSold, _ethAmount, startPrice, endPrice, totalVariableTokens, totalFixedTokens);
   }

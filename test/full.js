@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: TokenSaleTest.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 17, 2018 11:40 PM
+ * @Last modified time: Sunday, March 18, 2018 3:36 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -20,6 +20,29 @@
 const ERC20 = artifacts.require(`ERC20`);
 const XYOfficialTokenSale = artifacts.require(`XYOfficialTokenSale`);
 
+const etherToBuyWith = 0.1;
+const tokensCreated = 100000000000;
+const tokensToMakeAvailable = 45000000000;
+const startPrice = 100000;
+// const endPrice = 33333;
+// const variableMax = 36000000000;
+// const fixedMax = 9000000000;
+
+const BN = (_x_) => {
+  return web3.toBigNumber(_x_);
+};
+
+const FW = (_x_) => {
+  return BN(web3.fromWei(BN(_x_)));
+};
+
+const TW = (_x_) => {
+  return BN(web3.toWei(BN(_x_)));
+};
+
+const CMP = (_x_, _y_) => {
+  return BN(_x_).eq(BN(_y_));
+};
 
 contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
   const accountZero = accounts[0];
@@ -30,16 +53,16 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       .then((erc20) => {
         return erc20.balanceOf(accountZero);
       })
-      .then((value) => {
+      .then((balance) => {
         return assert.equal(
-          value.toNumber(),
-          web3.toWei(100000000000),
-          `Balance not correct [${value.toNumber()}]`,
+          FW(balance).toString(10),
+          BN(tokensCreated).toString(10),
+          `Balance not correct [${BN(balance).toString(10)}]`,
         );
       });
   });
 
-  it(`should make 100000000 XYO Tokens Available`, () => {
+  it(`should make 45000000000 XYO Tokens Available`, () => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return ERC20.deployed()
@@ -47,7 +70,7 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
             const erc20 = instance;
             return erc20.approve(
               tokenSale.address,
-              web3.toWei(10000000000), {
+              TW(tokensToMakeAvailable), {
                 from: accountZero,
               },
             ).then((result) => {
@@ -56,7 +79,7 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
                 .then((allowance) => {
                   return assert.equal(
                     allowance.toNumber(),
-                    web3.toWei(10000000000),
+                    TW(tokensToMakeAvailable),
                     `Allowance not correct [${allowance}]`,
                   );
                 });
@@ -65,67 +88,76 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       });
   });
 
-  it(`should buy 0.1 Ether worth of XYO`, (() => {
+  it(`${etherToBuyWith} Ether should buy ${startPrice} XYO`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
-        return tokenSale.purchase({ from: accountOne, value: web3.toWei(0.1) })
+        return tokenSale.predictTokensForEther.call(etherToBuyWith)
+          .then((tokens) => {
+            return assert(
+              CMP(tokens, startPrice * etherToBuyWith),
+              `Projected Price Wrong [${tokens}:${startPrice * etherToBuyWith}]`,
+            );
+          });
+      });
+  }));
+
+  it(`should buy ${etherToBuyWith} Ether worth of XYO`, (() => {
+    return XYOfficialTokenSale.deployed()
+      .then((tokenSale) => {
+        return tokenSale.purchase({ from: accountOne, value: TW(etherToBuyWith) })
           .then((result) => {
             assert(result, `Purchase must return True`);
           });
       });
   }));
 
-  it(`should have 0.1 Ether pending`, (() => {
+  it(`should have ${etherToBuyWith} Ether pending`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return tokenSale.pending(accountOne)
           .then((pending) => {
-            return assert.equal(
-              pending[0].toNumber(),
-              web3.toWei(0.1),
-              `Pending Ether not correct [${pending}]`,
+            return assert(
+              CMP(pending[0], TW(etherToBuyWith)),
+              `Pending Ether not correct [${BN(pending[0])}:${TW(etherToBuyWith)}]`,
             );
           });
       });
   }));
 
-  it(`should have 1 Ether worth of XYO pending`, (() => {
+  it(`should have ${etherToBuyWith} Ether worth of XYO pending`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return tokenSale.pending(accountOne)
           .then((pending) => {
-            return assert.equal(
-              pending[1].toNumber(),
-              web3.toWei(0.1 * 100000),
-              `Pending XYO not correct [${pending}]`,
+            return assert(
+              CMP(pending[1], TW(etherToBuyWith * startPrice)),
+              `Pending XYO not correct [${BN(pending[1]).toString(10)}]`,
             );
           });
       });
   }));
 
-  it(`should have 0.1 Ether balance`, (() => {
+  it(`should have ${etherToBuyWith} Ether balance`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         const balance = web3.eth.getBalance(tokenSale.address);
-        return assert.equal(
-          balance.toNumber(),
-          web3.toWei(0.1),
-          `Balance Ether not correct [${balance.toNumber()}]`,
+        return assert(
+          CMP(balance, TW(etherToBuyWith)),
+          `Balance Ether not correct [${BN(balance).toString(10)}:${TW(etherToBuyWith).toString(10)}]`,
         );
       });
   }));
 
-  it(`should have 1 Ether worth of XYO balance`, (() => {
+  it(`should have ${etherToBuyWith} Ether worth of XYO balance`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return ERC20.deployed()
           .then((erc20) => {
-            erc20.balanceOf.call(tokenSale.address)
+            return erc20.balanceOf.call(tokenSale.address)
               .then((balance) => {
-                return assert.equal(
-                  balance.toNumber(),
-                  web3.toWei(0.1 * 100000),
-                  `Pending XYO not correct [${balance}]`,
+                return assert(
+                  CMP(balance, TW(etherToBuyWith * startPrice)),
+                  `Pending XYO not correct [${BN(balance).toString(10)}:${TW(etherToBuyWith * startPrice).toString(10)}]`,
                 );
               });
           });
@@ -137,34 +169,32 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       .then((tokenSale) => {
         return tokenSale.approve(accountOne, accountOne)
           .then((result) => {
-            assert(result, `Approve must return True [${result}]`);
+            return assert(result, `Approve must return True [${result}]`);
           });
       });
   }));
 
-  it(`should no longer have 0.1 Ether pending`, (() => {
+  it(`should no longer have ${etherToBuyWith} Ether pending`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return tokenSale.pending(accountOne)
           .then((pending) => {
-            return assert.equal(
-              pending[0].toNumber(),
-              web3.toWei(0),
-              `Pending Ether not correct [${pending}]`,
+            return assert(
+              CMP(pending[0], TW(0)),
+              `Pending Ether not correct [${BN(pending[0]).toString(10)}:${TW(0).toString(10)}]`,
             );
           });
       });
   }));
 
-  it(`should no longer have 0.1 Ether worth of XYO pending`, (() => {
+  it(`should no longer have ${etherToBuyWith} Ether worth of XYO pending`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return tokenSale.pending(accountOne)
           .then((pending) => {
-            return assert.equal(
-              pending[1].toNumber(),
-              web3.toWei(0),
-              `New Pending XYO not correct [${pending}]`,
+            return assert(
+              CMP(pending[1], TW(0)),
+              `New Pending XYO not correct [${BN(pending[1]).toString(10)}:${TW(0)}]`,
             );
           });
       });
@@ -176,9 +206,8 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
         return tokenSale.numberSold()
           .then((numberSold) => {
             return assert(
-              web3.fromWei(numberSold).toString() ===
-              (0.1 * 100000).toString(),
-              `Number Sold not correct [${web3.fromWei(numberSold)}, ${0.1 * 100000}]`,
+              CMP(FW(numberSold), etherToBuyWith * startPrice),
+              `Number Sold not correct [Actual: ${FW(numberSold).toString(10)}, Expected: ${BN(etherToBuyWith * startPrice).toString(10)}]`,
             );
           });
       });
@@ -187,12 +216,12 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
   it(`should have a new price`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
-        return tokenSale.predictTokensForEther(web3.toWei(3))
+        return tokenSale.predictTokensForEther(TW(3))
           .then((tokens) => {
             return assert(
               tokens.toString(10) ===
-              web3.toWei(1 * 100000).toString(10),
-              `New Price not correct [${tokens.toString(10)}, ${web3.toWei(1 * 100000).toString(10)}]`,
+              TW(etherToBuyWith * startPrice).toString(10),
+              `New Price not correct [Actual: ${tokens.toString(10)}, Expected: ${TW(1 * startPrice).toString(10)}]`,
             );
           });
       });

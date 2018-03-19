@@ -120,14 +120,14 @@ library XYVariablePrice {
   function _getMaxEtherSpendableOnFixed(uint _numberSold, uint _endPrice, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
     if (_maxVariableAvailable > _numberSold) // check if there are Variable-priced Tokens available
     {
-      return _maxFixedAvailable * _endPrice; // returns the maximum amount of Ether that can be spent on Fixed-priced Tokens
+      return SafeMath.div(_maxFixedAvailable, _endPrice / 10**18); // returns the maximum amount of Ether that can be spent on Fixed-priced Tokens
     }else if (SafeMath.add(_maxVariableAvailable, _maxFixedAvailable) <= _numberSold) // case where there are no Tokens available
     {
       return 0;
     }
     else // case where there not Variable-priced Tokens available
     {
-      return SafeMath.mul(_endPrice / (10 ** 9), _getRemainingFixed(_numberSold, _maxVariableAvailable, _maxFixedAvailable) / (10 ** 9)); // return maxiumum amount of Ether that can be spent on remaining Fixed-priced Tokens
+      return SafeMath.div(_getRemainingFixed(_numberSold, _maxVariableAvailable, _maxFixedAvailable), _endPrice / (10 ** 18)); // return maxiumum amount of Ether that can be spent on remaining Fixed-priced Tokens
     }
   }
   // the maximum amount of Fixed-priced Tokens remaining to-date
@@ -154,7 +154,7 @@ library XYVariablePrice {
     }
     else {
       uint tokensAvailablePerEtherRange = SafeMath.sub(_startPrice, _endPrice); // the start and end price are defined in Tokens, so the start price is greater than the end price (in Tokens)
-      uint percentComplete = SafeMath.div(_numberSold * (10 ** 9), (_maxVariableAvailable) * (10 ** 9)); // the percentage of Tokens sold to-date of the maximum Variable-priced Tokens available
+      uint percentComplete = SafeMath.div(_numberSold, (_maxVariableAvailable) / (10 ** 18)); // the percentage of Tokens sold to-date of the maximum Variable-priced Tokens available
       uint delta = SafeMath.mul(percentComplete / (10 ** 9), tokensAvailablePerEtherRange / (10 ** 9));  // the amount of Tokens available given the percentage of Tokens sold to-date
       return SafeMath.sub(_startPrice, delta); // returns the price at a given number of Tokens sold to-date
     }

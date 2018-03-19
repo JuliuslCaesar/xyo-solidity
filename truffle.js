@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: truffle-config.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, March 17, 2018 11:54 PM
+ * @Last modified time: Sunday, March 18, 2018 1:15 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -18,6 +18,11 @@ module.exports = {
     development: {
       host: `127.0.0.1`,
       port: 9545,
+      network_id: `*`, // Match any network id
+    },
+    ganache: {
+      host: `127.0.0.1`,
+      port: 8546,
       network_id: `*`, // Match any network id
     },
   },

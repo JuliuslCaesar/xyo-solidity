@@ -14,7 +14,7 @@ contract XYVariablePriceTest {
     uint _endVariablePrice, // 18 places, Variable Token end price at beginning of Token Sale
     uint _maxVariableAvailableIn, // 0 places, total Variable-priced Tokens available at start of Token Sale
     uint _maxFixedAvailableIn) // 0 places, total Fixed-priced Tokens available at start of Token Sale prior
-  internal pure returns(uint) {
+  public pure returns(uint) {
     return XYVariablePrice.getTokensForEther(
       _numberSold,
       _ether,
@@ -24,21 +24,21 @@ contract XYVariablePriceTest {
       _maxFixedAvailableIn);
   }
 
-  function getMaxTokensAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
+  function getMaxTokensAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) public pure returns(uint) {
     return XYVariablePrice._getMaxTokensAvailableForTransaction(
       _numberSold,
       _maxVariableAvailable,
       _maxFixedAvailable
       );
   }
-  function isVariableSoldOut(uint _numberSold, uint _maxVariableAvailable) internal pure returns(bool)
+  function isVariableSoldOut(uint _numberSold, uint _maxVariableAvailable) public pure returns(bool)
   {
     return XYVariablePrice._isVariableSoldOut(
       _numberSold,
       _maxVariableAvailable
       );
   }
-  function isFixedSoldOut(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(bool)
+  function isFixedSoldOut(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) public pure returns(bool)
   {
     return XYVariablePrice._isFixedSoldOut(
       _numberSold,
@@ -47,7 +47,7 @@ contract XYVariablePriceTest {
       );
   }
   // desired amount of Fixed-priced Tokens given Ether input, potentially for the final Transaction if Ether input is larger than Token availability
-  function getDesiredFixedTokensForEther(uint _numberSold, uint _ether, uint _endVariablePrice, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
+  function getDesiredFixedTokensForEther(uint _numberSold, uint _ether, uint _endVariablePrice, uint _maxVariableAvailable, uint _maxFixedAvailable) public pure returns(uint) {
     return XYVariablePrice._getDesiredFixedTokensForEther(
       _numberSold,
       _ether,
@@ -57,7 +57,7 @@ contract XYVariablePriceTest {
       );
   }
   // the maximum amount of Ether a buyer can spend on Variable-priced Tokens
-  function getMaxEtherSpendableOnVariable(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) internal pure returns(uint) {
+  function getMaxEtherSpendableOnVariable(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) public pure returns(uint) {
     return XYVariablePrice._getMaxEtherSpendableOnVariable(
       _numberSold,
       _startPrice,
@@ -66,7 +66,7 @@ contract XYVariablePriceTest {
       );
   }
   // desired amount of Variable-priced Tokens given Ether input
-  function getDesiredVariableTokensForEther(uint _numberSold, uint _ether, uint _startVariablePrice, uint _endVariablePrice, uint _maxVariableAvailable) internal pure returns(uint) {
+  function getDesiredVariableTokensForEther(uint _numberSold, uint _ether, uint _startVariablePrice, uint _endVariablePrice, uint _maxVariableAvailable) public pure returns(uint) {
     return XYVariablePrice._getDesiredVariableTokensForEther(
       _numberSold,
       _ether,
@@ -76,7 +76,7 @@ contract XYVariablePriceTest {
       );
   }
   // the maximum amount of Ether a buyer can spend on Fixed-priced Tokens
-  function getMaxEtherSpendableOnFixed(uint _numberSold, uint _endPrice, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
+  function getMaxEtherSpendableOnFixed(uint _numberSold, uint _endPrice, uint _maxVariableAvailable, uint _maxFixedAvailable) public pure returns(uint) {
     return XYVariablePrice._getMaxEtherSpendableOnFixed(
       _numberSold,
       _endPrice,
@@ -85,7 +85,7 @@ contract XYVariablePriceTest {
       );
   }
   // the maximum amount of Fixed-priced Tokens remaining to-date
-  function getRemainingFixed(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) internal pure returns(uint) {
+  function getRemainingFixed(uint _numberSold, uint _maxVariableAvailable, uint _maxFixedAvailable) public pure returns(uint) {
     return XYVariablePrice._getRemainingFixed(
       _numberSold,
       _maxVariableAvailable,
@@ -93,7 +93,7 @@ contract XYVariablePriceTest {
       );
   }
   // this calculates the Token Price at the number of Tokens sold to-date
-  function getCurrentPrice(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) internal pure returns(uint) {
+  function getCurrentPrice(uint _numberSold, uint _startPrice, uint _endPrice, uint _maxVariableAvailable) public pure returns(uint) {
     return XYVariablePrice._getCurrentPrice(
       _numberSold,
       _startPrice,
@@ -102,7 +102,7 @@ contract XYVariablePriceTest {
       );
   }
   // the maximum amoung of Variable-priced Tokens available to-date
-  function getMaxVariableAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable) internal pure returns(uint) {
+  function getMaxVariableAvailableForTransaction(uint _numberSold, uint _maxVariableAvailable) public pure returns(uint) {
     return XYVariablePrice._getMaxVariableAvailableForTransaction(
       _numberSold,
       _maxVariableAvailable

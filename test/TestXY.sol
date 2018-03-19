@@ -20,8 +20,8 @@ contract TestXY {
     uint delay = 0;
     uint epoch = 0;
     address xynotify = 0;
-    xy.publishQuery(xyoValue, xyoAddress, accuracy, certainty, delay, epoch, xynotify);
-    Assert.equal(xy.hasPendingQuery(), true, 'owner should have pending query');
+    //xy.publishQuery(xyoValue, xyoAddress, accuracy, certainty, delay, epoch, xynotify);
+    //Assert.equal(xy.hasPendingQuery(), true, 'owner should have pending query');
   }
 
 
