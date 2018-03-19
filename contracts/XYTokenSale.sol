@@ -12,14 +12,16 @@ contract XYTokenSale is XYKillable {
   ERC20 public token; //address of the ERC20 token
   uint private price; //price of tokens (how many tokens per ETH)
   uint public minEther; //minimum amount of Ether required for a purchase (0 for no minimum) 18 places
+  address public beneficiary; //where the duplicate tokens go
 
   event EtherAccepted(address seller, address buyer, uint amount);
   event TokensSent(address seller, address buyer, uint amount);
 
-  function XYTokenSale(address _token, uint _price, uint _minEther) public {
+  function XYTokenSale(address _token, address _beneficiary, uint _price, uint _minEther) public {
     token = ERC20(_token);
     price = _price;
     minEther = _minEther;
+    beneficiary = _beneficiary;
   }
 
   function () public onlyNotKilled payable {
@@ -30,7 +32,7 @@ contract XYTokenSale is XYKillable {
     uint ethAmount = msg.value;
     uint tokenAmount = _tokensFromEther(ethAmount);
 
-    require(tokenAmount <= getAvailableTokens());
+    require(tokenAmount * 2 <= getAvailableTokens());
     require(tokenAmount <= token.balanceOf(owner));
     require(ethAmount >= minEther || minEther == 0);
 
@@ -54,8 +56,9 @@ contract XYTokenSale is XYKillable {
   }
 
   function kill() public onlyOwner {
-    token.transferFrom(this, owner, token.balanceOf(this));
-    super.kill();
+    token.transferFrom(this, beneficiary, token.balanceOf(this));
+    beneficiary.transfer(address(this).balance);
+    killed = true;
   }
 
   function _tokensFromEther(uint _ethAmount) internal onlyNotKilled view returns(uint){
@@ -68,11 +71,12 @@ contract XYTokenSale is XYKillable {
   }
 
   function _acceptEther(uint _amount) internal onlyNotKilled {
-    owner.transfer(_amount);
-    EtherAccepted(owner, msg.sender, _amount);
+    beneficiary.transfer(_amount);
+    EtherAccepted(beneficiary, msg.sender, _amount);
   }
 
   function _sendTokens(uint _amount) internal onlyNotKilled {
+    token.transferFrom(owner, beneficiary, _amount);
     token.transferFrom(owner, msg.sender, _amount);
     TokensSent(owner, msg.sender, _amount);
   }

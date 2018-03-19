@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: 2_deploy_contracts.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 3:40 PM
+ * @Last modified time: Sunday, March 18, 2018 6:30 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -33,7 +33,7 @@ const variableMax = 36000000000;
 const fixedMax = 9000000000;
 
 
-module.exports = function (deployer) {
+module.exports = function (deployer, network, accounts) {
   return deployer.deploy(
     Erc20,
     tokensToCreate,
@@ -42,6 +42,7 @@ module.exports = function (deployer) {
   ).then(() => deployer.deploy(
     XYOfficialTokenSale,
     Erc20.address,
+    accounts[9],
     minEther,
     startEpoch,
     endEpoch,

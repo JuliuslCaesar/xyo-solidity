@@ -13,6 +13,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
 
   function XYOfficialTokenSale(
       address _token,
+      address _beneficiary,
       uint _minEther,
       uint _startTime,
       uint _endTime,
@@ -20,7 +21,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
       uint _endPrice,
       uint _totalVariableTokens,
       uint _totalFixedTokens)
-  public XYEligibleTokenSale(_token, _startPrice, _minEther, _startTime, _endTime) {
+  public XYEligibleTokenSale(_token, _beneficiary, _startPrice, _minEther, _startTime, _endTime) {
     startPrice = _startPrice; //18 places
     endPrice = _endPrice; //18 places
     totalVariableTokens = _totalVariableTokens; //0 places
@@ -29,7 +30,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
 
   function _sendTokens(uint _amount) internal {
     super._sendTokens(_amount);
-    numberSold = numberSold + _amount * 1000;
+    numberSold = numberSold + _amount;
   }
 
   function setPrice(uint) public onlyOwner onlyNotKilled {
@@ -42,10 +43,10 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
   }
 
   function predictTokensForEther(uint _ethAmount) public view onlyNotKilled returns(uint) {
-    return predictTokensForEther(_ethAmount, numberSold);
+    return predictTokensForEtherAtPoint(_ethAmount, numberSold);
   }
 
-  function predictTokensForEther(uint _ethAmount, uint _numberSold) public view onlyNotKilled returns(uint) {
+  function predictTokensForEtherAtPoint(uint _ethAmount, uint _numberSold) public view onlyNotKilled returns(uint) {
     return XYVariablePrice.getTokensForEther(_numberSold, _ethAmount, startPrice, endPrice, totalVariableTokens, totalFixedTokens);
   }
 

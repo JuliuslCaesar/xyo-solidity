@@ -5,10 +5,10 @@ import "./XYProofOfEligibility.sol";
 
 contract XYEligibleTokenSale is XYPendingTokenSale, XYProofOfEligibility {
 
-  function XYEligibleTokenSale(address _token, uint _price, uint _minEther, uint _startTime, uint _endTime)
-  public XYPendingTokenSale(_token, _price, _minEther, _startTime, _endTime) {}
+  function XYEligibleTokenSale(address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
+  public XYPendingTokenSale(_token, _beneficiary, _price, _minEther, _startTime, _endTime) {}
 
-  function approve(address _buyer, address _proofOfEligibility) public onlyApprovers onlyNotKilled {
+  function approve(address _buyer, byte[] _proofOfEligibility) public onlyApprovers onlyNotKilled {
     require(!blocked[_buyer]);
     setEligiblity(_buyer, _proofOfEligibility);
     _approve(_buyer);
@@ -25,7 +25,7 @@ contract XYEligibleTokenSale is XYPendingTokenSale, XYProofOfEligibility {
     super._purchase(_ethAmount, _tokenAmount);
 
     //if the buyer is eligible, auto approve
-    if (eligible[buyer] != 0) {
+    if (eligible[buyer].length > 0) {
       _approve(buyer);
     }
   }

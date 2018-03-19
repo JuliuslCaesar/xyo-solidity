@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: TokenSaleTest.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 3:36 PM
+ * @Last modified time: Sunday, March 18, 2018 7:05 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -20,9 +20,9 @@
 const ERC20 = artifacts.require(`ERC20`);
 const XYOfficialTokenSale = artifacts.require(`XYOfficialTokenSale`);
 
-const etherToBuyWith = 0.1;
+const etherToBuyWith = 2;
 const tokensCreated = 100000000000;
-const tokensToMakeAvailable = 45000000000;
+const tokensToMakeAvailable = 90000000000;
 const startPrice = 100000;
 // const endPrice = 33333;
 // const variableMax = 36000000000;
@@ -47,6 +47,7 @@ const CMP = (_x_, _y_) => {
 contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
   const accountZero = accounts[0];
   const accountOne = accounts[1];
+  const accountNine = accounts[9];
 
   it(`should have 100000000000 XYO tokens for Account[0]`, () => {
     return ERC20.deployed()
@@ -62,7 +63,7 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       });
   });
 
-  it(`should make 45000000000 XYO Tokens Available`, () => {
+  it(`should make ${tokensToMakeAvailable} XYO Tokens Available`, () => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
         return ERC20.deployed()
@@ -88,13 +89,13 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       });
   });
 
-  it(`${etherToBuyWith} Ether should buy ${startPrice} XYO`, (() => {
+  it(`${etherToBuyWith} Ether should buy ${etherToBuyWith * startPrice} XYO`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
-        return tokenSale.predictTokensForEther.call(etherToBuyWith)
+        return tokenSale.predictTokensForEther.call(TW(etherToBuyWith))
           .then((tokens) => {
             return assert(
-              CMP(tokens, startPrice * etherToBuyWith),
+              CMP(FW(tokens), startPrice * etherToBuyWith),
               `Projected Price Wrong [${tokens}:${startPrice * etherToBuyWith}]`,
             );
           });
@@ -164,12 +165,35 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
       });
   }));
 
+  it(`should have ${etherToBuyWith} Ether worth of XYO balance [AccountNine]`, (() => {
+    return ERC20.deployed()
+      .then((erc20) => {
+        return erc20.balanceOf.call(accountNine)
+          .then((balance) => {
+            return assert(
+              CMP(balance, TW(etherToBuyWith * startPrice)),
+              `Pending XYO not correct [${BN(balance).toString(10)}:${TW(etherToBuyWith * startPrice).toString(10)}]`,
+            );
+          });
+      });
+  }));
+
   it(`should approve pending transaction`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
-        return tokenSale.approve(accountOne, accountOne)
+        return tokenSale.approve(accountOne, [`0x33`, `0x34`, `0x35`, `0x37`])
           .then((result) => {
             return assert(result, `Approve must return True [${result}]`);
+          });
+      });
+  }));
+
+  it(`should have proof of eligibility`, (() => {
+    return XYOfficialTokenSale.deployed()
+      .then((tokenSale) => {
+        return tokenSale.eligible(accountOne, 1)
+          .then((eligByte) => {
+            return assert(eligByte === `0x34`, `Elig Bytes must be 4 [${eligByte}]`);
           });
       });
   }));
@@ -185,6 +209,14 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
             );
           });
       });
+  }));
+
+  it(`should have ${etherToBuyWith} Ether balance (Account Nine)`, (() => {
+    const balance = web3.eth.getBalance(accountNine);
+    return assert(
+      CMP(balance, TW(etherToBuyWith)),
+      `Balance Ether not correct [${FW(balance).toString(10)}:${BN(etherToBuyWith).toString(10)}]`,
+    );
   }));
 
   it(`should no longer have ${etherToBuyWith} Ether worth of XYO pending`, (() => {
@@ -216,7 +248,7 @@ contract(`XYOfficialTokenSale-ERC20`, (accounts) => {
   it(`should have a new price`, (() => {
     return XYOfficialTokenSale.deployed()
       .then((tokenSale) => {
-        return tokenSale.predictTokensForEther(TW(3))
+        return tokenSale.predictTokensForEther(TW(1))
           .then((tokens) => {
             return assert(
               tokens.toString(10) ===
