@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: gulpfile.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 11:11 AM
+ * @Last modified time: Friday, March 23, 2018 12:33 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -13,6 +13,7 @@
 
 const gulp = require(`gulp`);
 
+require(`./gulp/clean.js`);
 require(`./gulp/solidity.js`);
 
 gulp.task(`default`, [`solidity`]);

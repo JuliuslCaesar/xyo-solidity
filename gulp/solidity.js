@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: solidity.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 12:44 PM
+ * @Last modified time: Friday, March 23, 2018 12:37 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -21,11 +21,6 @@ const connect = require(`gulp-connect`);
 const debug = require(`gulp-debug-streams`);
 
 const XYSolidity = require(`./../index.js`);
-
-const CONTRACT_BASE = `./contracts`;
-const OUTPUT_BASE = `./dist`;
-
-const getLocation = (base, location) => `${base}${location}`;
 
 const xycompile = (path, callback) => {
   const solidity = new XYSolidity();
@@ -49,18 +44,18 @@ const compile = through.obj((_file, encoding, callback) => {
   });
 });
 
-const solidity = () => gulp.src(getLocation(CONTRACT_BASE, `/**/*.sol`))
+const solidity = () => gulp.src(`./contracts/**/*.sol`)
   .pipe(debug())
   .pipe(compile)
   .pipe(debug())
   .pipe(rename({ extname: `.json` }))
   .pipe(debug())
-  .pipe(gulp.dest(getLocation(OUTPUT_BASE, `/contracts/`)));
+  .pipe(gulp.dest(`./dist/contracts/`));
 
-gulp.task(`solidity-task`, solidity);
+gulp.task(`solidity`, solidity);
 
-gulp.task(`solidity`, [`solidity-task`], () => {
-  gulp.watch(getLocation(CONTRACT_BASE, `/**/*.*`), [`solidity`], connect.reload());
+gulp.task(`watch-solidity`, [`solidity`], () => {
+  gulp.watch(`./contracts/**/*.*`, [`solidity`], connect.reload());
 });
 
 module.exports = solidity;
