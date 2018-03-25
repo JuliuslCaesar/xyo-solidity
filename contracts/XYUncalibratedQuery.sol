@@ -1,11 +1,12 @@
 pragma solidity ^0.4.19;
 
+import "./XYDeprecatable.sol";
 import './SafeMath.sol';
-
 
 interface XYUncalibratedQueryNotify {
     function answer(
         address xyoAddress,
+        uint index,
         int latitude,
         int longitude,
         int altitude,
@@ -14,12 +15,12 @@ interface XYUncalibratedQueryNotify {
         uint epoch) external;
 }
 
-
-contract XYUncalibratedQuery {
+contract XYUncalibratedQuery is XYDeprecatable {
     using SafeMath for *;
 
     struct PendingQuery {
         uint xyoValue;
+        uint ethValue;
         address xyoAddress;
         uint accuracyThreshold;
         uint certaintyThresold;
@@ -39,13 +40,20 @@ contract XYUncalibratedQuery {
     }
 
     // Stores a mapping of pending queries
-    mapping (address => PendingQuery) public pendingQueries;
+    mapping (address => PendingQuery[]) public pendingQueries;
+
     // Stores a mapping of xyoAddresses to answers
-    mapping (address => Answer) public answeredQueries;
+    // there can be multiple answers for question
+    // a worse answer can never be entered
+    // if a better answer comes in, the previous answer gets 25% or the reward
+    // the winning answer always get 75% of the reward
+
+    mapping (address => Answer[][]) public answeredQueries;
     address[] public answerList;
 
     event QueryReceived(
         uint xyoValue,
+        uint ethValue,
         address xyoAddress,
         uint accuracy,
         uint certainty,
@@ -55,6 +63,7 @@ contract XYUncalibratedQuery {
 
     event AnswerReceived(
         address xyoAddress,
+        uint index,
         int latitude,
         int longitude,
         int altitude,
@@ -63,63 +72,59 @@ contract XYUncalibratedQuery {
         uint epoch
         );
 
-    function publishQuery(
+    function publishQuery (
         uint _xyoValue,
         address _xyoAddress,
         uint _accuracy,
         uint _certainty,
         uint _delay,
         uint _epoch,
-        address _xynotify) public returns(bool) {
+        address _xynotify) public payable {
 
+        require(msg.value > 0);
         require(_xyoValue > 0);
-        pendingQueries[msg.sender] = PendingQuery(
+
+        pendingQueries[msg.sender].push(PendingQuery(
             _xyoValue,
+            msg.value,
             _xyoAddress,
             _accuracy,
             _certainty,
             _delay,
             _epoch,
-            _xynotify);
+            _xynotify));
 
         QueryReceived(
             _xyoValue,
+            msg.value,
             _xyoAddress,
             _accuracy,
             _certainty,
             _delay,
             _epoch);
-
-        return true;
     }
 
-    // this is how a diviner sets the answer.  Need to implement the origin proof
     function publishAnswer(
         address _xyoAddress,
+        uint _index,
         int _latitude,
         int _longitude,
         int _altitude,
         uint _accuracy,
         uint _certainty,
-        uint _epoch) public returns(bool) {
-        // TODO: Have to verify before returning
-        answeredQueries[_xyoAddress] = Answer(
-            _xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
-        answerList.push(_xyoAddress);
-        pendingQueries[msg.sender].xyoValue = 0;
-        if (pendingQueries[msg.sender].xynotify != 0) {
-            XYUncalibratedQueryNotify(pendingQueries[msg.sender].xynotify).answer(
-                _xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
-        }
-        AnswerReceived(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
-        return true;
-    }
+        uint _epoch) public {
 
-    function hasPendingQuery() view public returns(bool) {
-       if(pendingQueries[msg.sender].xyoValue > 0) {
-           return true;
-       }
-       return false;
+        PendingQuery storage pendingQuery = pendingQueries[_xyoAddress][_index];
+
+        answeredQueries[_xyoAddress][_index].push(Answer(
+            _xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch));
+        answerList.push(_xyoAddress);
+        pendingQuery.xyoValue = 0;
+        if (pendingQuery.xynotify != 0) {
+            XYUncalibratedQueryNotify(pendingQuery.xynotify).answer(
+                _xyoAddress, _index, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
+        }
+        AnswerReceived(_xyoAddress, _index, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
     }
 
 }
