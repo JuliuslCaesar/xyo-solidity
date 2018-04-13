@@ -39,7 +39,6 @@ The gulp files are under `gulp/`.
 
 ### Planned
 * Verify answers provided by Diviners
-TODO
 
 ## Authors
 
