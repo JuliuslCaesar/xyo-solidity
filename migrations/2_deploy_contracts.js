@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: 2_deploy_contracts.js
  * @Last modified by:   arietrouw
- * @Last modified time: Sunday, March 18, 2018 6:30 PM
+ * @Last modified time: Monday, March 26, 2018 2:23 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -21,6 +21,8 @@ console.log(`=============================\r\n\r\n`);
 const Erc20 = artifacts.require(`ERC20`);
 const XYOfficialTokenSale = artifacts.require(`XYOfficialTokenSale`);
 const XYVariablePriceTest = artifacts.require(`XYVariablePriceTest`);
+const XYUncalibratedQuery = artifacts.require(`XYUncalibratedQuery`);
+const XYUncalibratedQueryExample = artifacts.require(`XYUncalibratedQueryExample`);
 
 const tokensToCreate = 100000000000;
 
@@ -50,5 +52,8 @@ module.exports = function (deployer, network, accounts) {
     endPrice,
     variableMax,
     fixedMax,
-  ).then(() => deployer.deploy(XYVariablePriceTest)));
+  ).then(() => deployer.deploy(XYVariablePriceTest)).then(() => deployer.deploy(
+    XYUncalibratedQuery,
+    Erc20.address,
+  )).then(() => deployer.deploy(XYUncalibratedQueryExample, XYUncalibratedQuery.address)));
 };
