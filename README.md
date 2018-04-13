@@ -1,6 +1,6 @@
 # XY Oracle Network Smart Contract API
 
-Library toolkit for developing dApps connected to the XY Oracle Network. Users can subscribe to webhooks for event listeners from the XY contract using https://if-eth.com.
+Library toolkit for developing dApps connected to the XY Oracle Network. Users can subscribe to webhooks for event listeners from the XY contract using https://ethercast.io/.
 
 ## Requirements
 
@@ -21,16 +21,30 @@ core smart contract to the local node as follows:
 
 You can also run the simple unit tests over the XY.sol file with `truffle test`
 
+## Project Structure
+
+All of the Ethereum smart contracts used are under `contracts/`, and the compiled JSON artifacts are under `dist/contracts/`. 
+
+Unit tests can be found at `test/`, and example smart contracts that communicate with the XY contract are under `examples/`.
+
+The migration scripts are under `migrations/`.
+
+The gulp files are under `gulp/`.
+
+## Milestones
+
+### Done
+* Basic interface for sending location queries and receiving answers
+* Multiple types of location query
+
+### Planned
+* Verify answers provided by Diviners
+TODO
+
 ## Authors
 
-See the list of [contributors](https://github.com/XYOracleNetwork/xyo-node/contributors) who participated in this project.
+See the list of [contributors](https://github.com/XYOracleNetwork/xyo-solidity/contributors) who participated in this project.
 
 ## License
 
-The xyo-node library (i.e. all code outside of the `cmd` directory) is licensed under the
-[GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html), also
-included in our repository in the `COPYING.LESSER` file.
-
-The xyo-node binaries (i.e. all code inside of the `cmd` directory) is licensed under the
-[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html), also included
-in our repository in the `COPYING` file.
+TODO
