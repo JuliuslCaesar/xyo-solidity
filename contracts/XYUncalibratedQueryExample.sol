@@ -1,4 +1,5 @@
 pragma solidity ^0.4.19;
+pragma experimental "v0.5.0";
 
 import "./XYUncalibratedQuery.sol";
 
@@ -9,7 +10,14 @@ contract XYUncalibratedQueryExample is XYUncalibratedQueryNotify {
 
   function XYUncalibratedQueryExample(address _xyoOracle) payable public {
     xyoOracle = XYUncalibratedQuery(_xyoOracle);
-    //xyoOracle.publishQuery.value(msg.value)();
+    xyoOracle.publishQuery.value(msg.value)(
+      xyoValue,
+      xyoAddress,
+      accuracy,
+      certainty,
+      delay,
+      epoch,
+      xynotify);
   }
 
   function answer(
