@@ -1,9 +1,9 @@
 pragma solidity ^0.4.19;
 pragma experimental "v0.5.0";
 
-import "./XYDeprecatable.sol";
-import "./ERC20.sol";
-import './SafeMath.sol';
+import './XYDeprecatable.sol';
+import './ERC20.sol';
+import './lib/SafeMath.sol';
 
 interface XYUncalibratedQueryNotify {
     function answer(

@@ -1,7 +1,6 @@
 pragma solidity ^0.4.19;
 
-import './SafeMath.sol';
-
+import "./lib/SafeMath.sol";
 
 interface XYCalibratedQueryNotify {
     function answer(

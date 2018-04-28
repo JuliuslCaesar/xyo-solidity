@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "node ./scripts/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,11 @@
     "ethereum",
     "location"
   ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
   "author": "",
   "license": "UNLICENSED",
   "bugs": {
@@ -35,24 +40,35 @@
   "homepage": "https://github.com/XYOracleNetwork/xyo-solidity#readme",
   "dependencies": {
     "ncp": "^2.0.0",
-    "solc": "^0.4.19"
+    "solc": "^0.4.23"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "debug": "^3.1.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
     "eslint-fixer": "^0.1.4",
-    "eslint-plugin-html": "^4.0.2",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-html": "^4.0.3",
+    "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.5.0",
     "gulp-debug-streams": "^3.0.0",
     "gulp-rename": "^1.2.2",
+    "loader-utils": "^1.1.0",
     "node-glob": "^1.2.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "orchestrator": "^0.3.8",
+    "schema-utils": "^0.4.5",
     "solhint": "^1.1.10",
     "through2": "^2.0.3"
   }

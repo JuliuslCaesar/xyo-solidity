@@ -1,14 +1,14 @@
 # @Author: XY | The Findables Company <arietrouw>
-# @Date:   Tuesday, January 23, 2018 9:36 AM
+# @Date:   Sunday, March 18, 2018 9:30 PM
 # @Email:  developer@xyfindables.com
 # @Filename: .eslintrc
 # @Last modified by:   arietrouw
-# @Last modified time: Sunday, March 11, 2018 8:51 PM
+# @Last modified time: Saturday, April 28, 2018 3:54 PM
 # @License: All Rights Reserved
 # @Copyright: Copyright XY | The Findables Company
 
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "standard", "standard-react"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
@@ -19,8 +19,10 @@
   "rules": {
     "func-names": 0,
     "quotes": [2, 'backtick'],
-    "class-methods-use-this": 0,
     "no-plusplus": 0,
-    "max-len": 0
+    "max-len": 0,
+    "prefer-destructuring": 0,
+    "no-underscore-dangle": 0,
+    "comma-dangle": 0
   }
 }
