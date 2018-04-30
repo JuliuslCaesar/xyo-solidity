@@ -1,13 +1,13 @@
 pragma solidity ^ 0.4 .19;
 
-import "./XYTokenSale.sol";
+import "XYTokenSale.sol";
 
 contract XYTimedTokenSale is XYTokenSale {
 
   uint public startTime; //when the sale starts (0 = right away)
   uint public endTime; //when the sale ends (0 = never)
 
-  function XYTimedTokenSale(address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
+  constructor(address _token, address _beneficiary, uint _price, uint _minEther, uint _startTime, uint _endTime)
   XYTokenSale(_token, _beneficiary, _price, _minEther)
   public {
     startTime = _startTime;

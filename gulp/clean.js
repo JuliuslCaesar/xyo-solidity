@@ -4,18 +4,16 @@
  * @Email:  developer@xyfindables.com
  * @Filename: clean.js
  * @Last modified by:   arietrouw
- * @Last modified time: Friday, March 23, 2018 11:58 AM
+ * @Last modified time: Sunday, April 29, 2018 7:29 PM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
 
-const gulp = require(`gulp`);
-const del = require(`del`);
+const gulp = require(`gulp`)
+const del = require(`del`)
 
-const clean = () => {
-  del(`./dist`);
-};
+const clean = () => del(`./dist`)
 
-gulp.task(`clean`, clean);
+gulp.task(`clean`, clean)
 
-module.exports = clean;
+module.exports = clean

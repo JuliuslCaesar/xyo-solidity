@@ -1,0 +1,1 @@
+module.exports = {"functionHashes":{},"gasEstimates":{"creation":[116,15200],"external":{},"internal":{"add(uint256,uint256)":null,"div(uint256,uint256)":null,"mul(uint256,uint256)":null,"sub(uint256,uint256)":null}},"interface":"[]"}

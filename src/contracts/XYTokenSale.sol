@@ -1,8 +1,8 @@
 pragma solidity ^0.4.19;
 
-import "./ERC20.sol";
-import "./XYKillable.sol";
-import "./lib/SafeMath.sol";
+import "ERC20.sol";
+import "XYKillable.sol";
+import "SafeMath.sol";
 
 
 contract XYTokenSale is XYKillable {
@@ -17,7 +17,7 @@ contract XYTokenSale is XYKillable {
   event EtherAccepted(address seller, address buyer, uint amount);
   event TokensSent(address seller, address buyer, uint amount);
 
-  function XYTokenSale(address _token, address _beneficiary, uint _price, uint _minEther) public {
+  constructor(address _token, address _beneficiary, uint _price, uint _minEther) public {
     token = ERC20(_token);
     price = _price;
     minEther = _minEther;
@@ -72,13 +72,13 @@ contract XYTokenSale is XYKillable {
 
   function _acceptEther(uint _amount) internal onlyNotKilled {
     beneficiary.transfer(_amount);
-    EtherAccepted(beneficiary, msg.sender, _amount);
+    emit EtherAccepted(beneficiary, msg.sender, _amount);
   }
 
   function _sendTokens(uint _amount) internal onlyNotKilled {
     token.transferFrom(owner, beneficiary, _amount);
     token.transferFrom(owner, msg.sender, _amount);
-    TokensSent(owner, msg.sender, _amount);
+    emit TokensSent(owner, msg.sender, _amount);
   }
 
 }

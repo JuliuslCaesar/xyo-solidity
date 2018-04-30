@@ -1,8 +1,8 @@
 pragma solidity ^0.4.19;
 
-import './XY.sol';
-import './Ownable.sol';
-import './SafeMath.sol';
+import 'XY.sol';
+import 'Ownable.sol';
+import 'SafeMath.sol';
 
 contract XYExample is Ownable {
     using SafeMath for *;

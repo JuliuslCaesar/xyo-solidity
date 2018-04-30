@@ -1,5 +1,5 @@
 pragma solidity ^ 0.4 .19;
-import "./SafeMath.sol";
+import "SafeMath.sol";
 library XYVariablePrice {
   using SafeMath
   for * ;

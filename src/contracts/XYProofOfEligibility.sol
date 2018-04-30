@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "./XYApprovable.sol";
+import "XYApprovable.sol";
 
 contract XYProofOfEligibility is XYApprovable {
 

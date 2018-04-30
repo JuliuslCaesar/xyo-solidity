@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import './SafeMath.sol';
+import 'SafeMath.sol';
 
 
 interface XYNotify {
@@ -45,7 +45,7 @@ contract XY {
     function publishQuery(uint _xyoValue, address _xyoAddress, uint _accuracy, uint _certainty, uint _delay, uint _epoch, address _xynotify, uint _expireTime) public returns(bool) {
         require(_xyoValue > 0);
         pendingQueries[msg.sender] = PendingQuery(_xyoValue, _xyoAddress, _accuracy, _certainty, _delay, _epoch, _xynotify, _expireTime);
-        QueryReceived(_xyoValue, _xyoAddress, _accuracy, _certainty, _delay, _epoch, _expireTime);
+        emit QueryReceived(_xyoValue, _xyoAddress, _accuracy, _certainty, _delay, _epoch, _expireTime);
         return true;
     }
 
@@ -61,7 +61,7 @@ contract XY {
         if (pendingQueries[msg.sender].xynotify != 0) {
             XYNotify(pendingQueries[msg.sender].xynotify).answer(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
         }
-        AnswerReceived(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
+        emit AnswerReceived(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
         return true;
     }
 

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
-import "./XYEligibleTokenSale.sol";
-import "./lib/XYVariablePrice.sol";
+import "XYEligibleTokenSale.sol";
+import "XYVariablePrice.sol";
 
 contract XYOfficialTokenSale is XYEligibleTokenSale {
 
@@ -11,7 +11,7 @@ contract XYOfficialTokenSale is XYEligibleTokenSale {
   uint public totalVariableTokens; // 0 places
   uint public totalFixedTokens; // 0 places
 
-  function XYOfficialTokenSale(
+  constructor (
       address _token,
       address _beneficiary,
       uint _minEther,

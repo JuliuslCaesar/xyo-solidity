@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "./lib/SafeMath.sol";
+import "SafeMath.sol";
 
 interface XYCalibratedQueryNotify {
     function answer(
@@ -97,7 +97,7 @@ contract XYCalibratedQuery {
             _calibrationAltitude,
             _xynotify);
 
-        QueryReceived(
+        emit QueryReceived(
             _xyoValue,
             _xyoAddress,
             _accuracy,
@@ -130,7 +130,7 @@ contract XYCalibratedQuery {
             XYCalibratedQueryNotify(pendingQueries[msg.sender].xynotify).answer(
                 _xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
         }
-        AnswerReceived(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
+        emit AnswerReceived(_xyoAddress, _latitude, _longitude, _altitude, _accuracy, _certainty, _epoch);
         return true;
     }
 

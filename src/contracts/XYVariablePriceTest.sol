@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "./lib/XYVariablePrice.sol";
+import "XYVariablePrice.sol";
 
 
 contract XYVariablePriceTest {

@@ -1,9 +1,9 @@
 pragma solidity ^0.4.19;
 pragma experimental "v0.5.0";
 
-import './XYDeprecatable.sol';
-import './ERC20.sol';
-import './lib/SafeMath.sol';
+import 'XYDeprecatable.sol';
+import 'ERC20.sol';
+import 'SafeMath.sol';
 
 interface XYUncalibratedQueryNotify {
     function answer(
@@ -77,7 +77,7 @@ contract XYUncalibratedQuery is XYDeprecatable {
         uint epoch
         );
 
-    function XYUncalibratedQuery (address _xyoToken) public {
+    constructor (address _xyoToken) public {
       xyoToken = ERC20(_xyoToken);
     }
 

@@ -1,12 +1,12 @@
 pragma solidity ^0.4.19;
 
-import "./XYKillable.sol";
+import "XYKillable.sol";
 
 contract XYApprovable is XYKillable {
 
     mapping (address => bool) public approvers;
 
-    function XYApprovable () public {
+    constructor () public {
       approvers[msg.sender] = true;
     }
 

@@ -4,20 +4,20 @@
  * @Email:  developer@xyfindables.com
  * @Filename: index.js
  * @Last modified by:   arietrouw
- * @Last modified time: Saturday, April 28, 2018 4:46 PM
+ * @Last modified time: Monday, April 30, 2018 10:28 AM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
 
-import ERC20 from "./contracts/ERC20.sol"
-import XYOfficialTokenSale from "./contracts/XYOfficialTokenSale.sol"
-import XYUncalibratedQuery from "./contracts/XYUncalibratedQuery.sol"
-import XYCalibratedQuery from "./contracts/XYCalibratedQuery.sol"
+import ERC20 from "../dist/contracts/ERC20"
+import XYOfficialTokenSale from "../dist/contracts/XYOfficialTokenSale"
+import XYUncalibratedQuery from "../dist/contracts/XYUncalibratedQuery"
+import XYCalibratedQuery from "../dist/contracts/XYCalibratedQuery"
 
 const XYO = {
-  XYOfficialTokenSale,
-  XYUncalibratedQuery,
-  XYCalibratedQuery
+  OfficialTokenSale: XYOfficialTokenSale,
+  UncalibratedQuery: XYUncalibratedQuery,
+  CalibratedQuery: XYCalibratedQuery
 }
 
-export { ERC20, XYO }
+export { XYO, ERC20 }
