@@ -4,7 +4,7 @@
  * @Email:  developer@xyfindables.com
  * @Filename: solidity.js
  * @Last modified by:   arietrouw
- * @Last modified time: Monday, April 30, 2018 11:05 AM
+ * @Last modified time: Saturday, May 19, 2018 11:29 AM
  * @License: All Rights Reserved
  * @Copyright: Copyright XY | The Findables Company
  */
@@ -43,6 +43,6 @@ gulp.task(`solidity1`, solidity1)
 
 gulp.task(`solidity2`, solidity2)
 
-gulp.task(`solidity`, [`solidity1`, `solidity2`])
+gulp.task(`solidity`, gulp.parallel(`solidity1`, `solidity2`), () => {})
 
 module.exports = solidity1
