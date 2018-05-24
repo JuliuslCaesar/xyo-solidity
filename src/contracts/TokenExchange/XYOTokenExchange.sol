@@ -1,10 +1,10 @@
 pragma solidity ^0.4.19;
 
 import "ERC20.sol";
-import "Ownable.sol";
+import "XYKillable.sol";
 import "SafeMath.sol";
 
-contract XYOTokenExchange is Ownable{
+contract XYOTokenExchange is XYKillable{
 
   using SafeMath
   for * ;
@@ -31,7 +31,7 @@ contract XYOTokenExchange is Ownable{
   struct SellOrder {
     address seller;
     uint tokens;
-    uint price; // 0 = market
+    uint price; // 0 = market (XYO per ETH)
     uint expireBlock;
     uint completedBlock;
   }
@@ -39,7 +39,7 @@ contract XYOTokenExchange is Ownable{
   struct BuyOrder {
     address buyer;
     uint tokens;
-    uint price; //0 = market
+    uint price; //0 = market (XYO per ETH)
     uint expireBlock;
     uint completedBlock;
   }
@@ -58,10 +58,12 @@ contract XYOTokenExchange is Ownable{
   uint transactionFee;
   address beneficiary;
 
+  /* Public */
+
   constructor (
       address _token,
       address _beneficiary
-      )
+  )
   public
   {
     token = ERC20(_token);
@@ -70,33 +72,57 @@ contract XYOTokenExchange is Ownable{
     beneficiary = _beneficiary;
   }
 
-  function buy(uint tokens, uint price, uint expires) public payable {
-    require (getMaxBuyableByBuyer(msg.sender) >= tokens);
+  function () public onlyNotKilled payable {
+    purchase();
+  }
 
-    uint fundsNeeded = fundsNeededForBuyOrder(tokens, price);
+  function purchase() public onlyNotKilled payable {
+    uint purchaseEth = msg.value;
 
-    require (fundsNeeded <= msg.value);
-
-    address(this).transfer(fundsNeeded);
-
-    BuyOrder memory buyOrder = BuyOrder(msg.sender, tokens, price, expires, 0);
-    processBuyOrder(buyOrder);
-    if (buyOrder.tokens > 0) {
-      buyOrders[price].push(buyOrder);
+    while (purchaseEth > 0) {
+      SellOrder memory order = getNextSellOrder();
+      uint saleEth = getSellOrderMaxEth(order);
+      uint tokens = 0;
+      if (saleEth > purchaseEth) {
+        tokens = purchaseEth * order.price;
+        token.transferFrom(this, msg.sender, tokens);
+        order.seller.transfer(purchaseEth);
+        purchaseEth = 0;
+        order.tokens = order.tokens - tokens;
+      } else {
+        tokens = saleEth * order.price;
+        token.transferFrom(this, msg.sender, tokens);
+        order.seller.transfer(saleEth);
+        purchaseEth = purchaseEth - saleEth;
+        order.tokens = 0;
+        removeSellOrder(order);
+      }
     }
   }
 
-  function sell(uint tokens, uint price, uint expires) public {
-    require (getMaxSellableBySeller(msg.sender) >= tokens);
-    // it is required that the caller first assigns transfer rights to the contract
-    token.transferFrom(msg.sender, this, tokens);
-
-    SellOrder memory sellOrder = SellOrder(msg.sender, tokens, price, expires, 0);
-    processSellOrder(sellOrder);
-    if (sellOrder.tokens > 0) {
-      sellOrders[price].push(sellOrder);
-    }
+  function kill() public onlyOwner {
+    token.transferFrom(this, beneficiary, token.balanceOf(this));
+    beneficiary.transfer(address(this).balance);
+    killed = true;
   }
+
+  function buy(uint tokens, uint price, uint expires) public payable onlyNotKilled {
+    return buyImpl(tokens, price, expires);
+  }
+
+  function sell(uint tokens, uint price, uint expires) public onlyNotKilled {
+    return sellImpl(tokens, price, expires);
+  }
+
+  function getMaxSellableBySeller(address seller) public view returns (uint) {
+    return getMaxSellableBySellerImpl(seller);
+  }
+
+  function getMaxBuyableByBuyer(address buyer) public view returns (uint) {
+    return getMaxBuyableByBuyerImpl(buyer);
+  }
+
+  /* Implementation */
 
   modifier onlySeller() {
     Seller storage seller = sellers[msg.sender];
@@ -108,6 +134,10 @@ contract XYOTokenExchange is Ownable{
     Buyer storage buyer = buyers[msg.sender];
     require(buyer.maxTokens > 0);
     _;
+  }
+
+  function getSellOrderMaxEth(SellOrder sellOrder) internal pure returns (uint) {
+    return sellOrder.tokens * sellOrder.price;
   }
 
   function setSeller(
@@ -129,7 +159,7 @@ contract XYOTokenExchange is Ownable{
     uint maxPrice,
     uint maxTokens,
     uint maxTokensPerBlock
-  ) public onlyOwner {
+  ) public onlyOwner onlyNotKilled {
     buyers[buyer].minPrice = minPrice;
     buyers[buyer].maxPrice = maxPrice;
     buyers[buyer].maxTokens = maxTokens;
@@ -190,6 +220,53 @@ contract XYOTokenExchange is Ownable{
         }
     }
     return array.length;
+  }
+
+  function getNextSellOrder() internal view returns(SellOrder) {
+    uint sellPrice = sellPrices[0];
+    SellOrder[] storage orders = sellOrders[sellPrice];
+    SellOrder storage order = orders[0];
+    return order;
+  }
+
+  function removeSellOrder(SellOrder order) internal {
+    if (order.tokens > 0) {
+      token.transferFrom(this, order.seller, order.tokens);
+      order.tokens = 0;
+    }
+    compressSellOrders(order.price);
+  }
+
+  function compressSellOrders(uint price) internal {
+    SellOrder[] storage orders = sellOrders[price];
+    uint index = 0;
+    while (index < orders.length) {
+      if (orders[index].tokens == 0) {
+        for (uint i = index; i < orders.length - 1; i++) {
+          orders[i] = orders[ i + 1 ];
+        }
+        delete orders[ orders.length - 1 ];
+        orders.length--;
+      } else {
+        index = index + 1;
+      }
+    }
+  }
+
+  function compressBuyOrders(uint price) internal {
+    BuyOrder[] storage orders = buyOrders[price];
+    uint index = 0;
+    while (index < orders.length) {
+      if (orders[index].tokens == 0) {
+        for (uint i = index; i < orders.length - 1; i++) {
+          orders[i] = orders[ i + 1 ];
+        }
+        delete orders[ orders.length - 1 ];
+        orders.length--;
+      } else {
+        index = index + 1;
+      }
+    }
   }
 
   //execute as much of the order as possible, return a revised order if not completed
@@ -278,7 +355,7 @@ contract XYOTokenExchange is Ownable{
     return SafeMath.mul(tokens / (10 ** 9), price / (10 ** 9));
   }
 
-  function getMaxSellableBySeller(address _seller) public view returns (uint) {
+  function getMaxSellableBySellerImpl(address _seller) internal view returns (uint) {
     Seller storage seller = sellers[_seller];
     if (seller.maxTokens > 0) {
       uint blocksToCheck = 5000;
@@ -308,7 +385,7 @@ contract XYOTokenExchange is Ownable{
     return 0;
   }
 
-  function getMaxBuyableByBuyer(address _buyer) public view returns (uint) {
+  function getMaxBuyableByBuyerImpl(address _buyer) internal view returns (uint) {
     Buyer storage buyer = buyers[_buyer];
     if (buyer.maxTokens > 0) {
       uint blocksToCheck = 5000;
@@ -336,6 +413,34 @@ contract XYOTokenExchange is Ownable{
       }
     }
     return 0;
+  }
+
+  function buyImpl(uint tokens, uint price, uint expires) internal onlyNotKilled {
+    require (getMaxBuyableByBuyer(msg.sender) >= tokens);
+
+    uint fundsNeeded = fundsNeededForBuyOrder(tokens, price);
+
+    require (fundsNeeded <= msg.value);
+
+    address(this).transfer(fundsNeeded);
+
+    BuyOrder memory buyOrder = BuyOrder(msg.sender, tokens, price, expires, 0);
+    processBuyOrder(buyOrder);
+    if (buyOrder.tokens > 0) {
+      buyOrders[price].push(buyOrder);
+    }
+  }
+
+  function sellImpl(uint tokens, uint price, uint expires) internal onlyNotKilled {
+    require (getMaxSellableBySeller(msg.sender) >= tokens);
+    // it is required that the caller first assigns transfer rights to the contract
+    token.transferFrom(msg.sender, this, tokens);
+
+    SellOrder memory sellOrder = SellOrder(msg.sender, tokens, price, expires, 0);
+    processSellOrder(sellOrder);
+    if (sellOrder.tokens > 0) {
+      sellOrders[price].push(sellOrder);
+    }
   }
 
 }

@@ -76,7 +76,9 @@ contract XYTokenSale is XYKillable {
   }
 
   function _sendTokens(uint _amount) internal onlyNotKilled {
-    token.transferFrom(owner, beneficiary, _amount);
+    if (owner != beneficiary) {
+      token.transferFrom(owner, beneficiary, _amount);
+    }
     token.transferFrom(owner, msg.sender, _amount);
     emit TokensSent(owner, msg.sender, _amount);
   }
